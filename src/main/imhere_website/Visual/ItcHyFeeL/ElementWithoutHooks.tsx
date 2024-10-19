@@ -1,6 +1,7 @@
 //import InstanceRender from './InstanceRender';
 import VisualObject from "./VisualObject";
 import InstanceRender from "./InstanceRender.tsx";
+//import InstanceRender from "./InstanceRender.tsx";
 
 interface ElementWithoutHooksProps {
     instance: VisualObject;

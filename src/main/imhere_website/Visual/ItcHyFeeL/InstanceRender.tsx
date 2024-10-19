@@ -1,12 +1,12 @@
 import { Component, ReactNode } from "react";
 import VisualObject from "./VisualObject";
-import { NavigateFunction, Params } from "react-router-dom";
+//import { NavigateFunction, Params } from "react-router-dom";
 
 interface InstanceRenderProps {
     instance: VisualObject;
     className?: string;
-    navigate: NavigateFunction;
-    params: Params;
+    // navigate: NavigateFunction;
+    // params: Params;
 }
 
 class InstanceRender extends Component<InstanceRenderProps> {
