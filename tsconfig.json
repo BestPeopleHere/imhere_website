@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx", // или "react" для старых версий React (<17)
+    "forceConsistentCasingInFileNames": true,
+    // другие настройки...
+  },
+}

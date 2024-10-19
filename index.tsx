@@ -1,10 +1,9 @@
-import MainController from "./src/main/ImHere_WebSite/Controller/MainController.js";
+import MainController from "./src/main/imhere_website/Controller/MainController";
 
 const mainController = new MainController();
 
 window.addEventListener('DOMContentLoaded', () => {
     mainController.start();
 });
-
 
 

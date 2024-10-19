@@ -1,7 +1,5 @@
 class Controller {
-
-    async performe()
-    {
+    async performe(): Promise<void> {
         console.log("Performed Controller");
         console.log("Performed Controller");
     }

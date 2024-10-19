@@ -4,13 +4,12 @@ import fs from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
+  plugins: [react(),
     {
       name: 'auto-import-css',
       transform(code, id) {
-        if (id.endsWith('.jsx')) {
-          const cssPath = id.replace(/\.jsx$/, '.css');
+        if (id.endsWith('.tsx')) {
+          const cssPath = id.replace(/\.tsx$/, '.css');
 
           //Пример асинхронной проверки существования файла
           return new Promise((resolve) => {
@@ -27,6 +26,5 @@ export default defineConfig({
         }
         return code;
       },
-    },
-  ],
-});
+    },],
+})
