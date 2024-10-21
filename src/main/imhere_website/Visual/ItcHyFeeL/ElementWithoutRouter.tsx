@@ -7,7 +7,7 @@ interface ElementWithoutHooksProps {
     instance: VisualObject;
 }
 
-function ElementWithoutHooks(props: ElementWithoutHooksProps) {
+function ElementWithoutRouter(props: ElementWithoutHooksProps) {
     const { instance } = props;
 
     if (instance instanceof VisualObject) {
@@ -18,4 +18,4 @@ function ElementWithoutHooks(props: ElementWithoutHooksProps) {
     }
 }
 
-export default ElementWithoutHooks;
+export default ElementWithoutRouter;

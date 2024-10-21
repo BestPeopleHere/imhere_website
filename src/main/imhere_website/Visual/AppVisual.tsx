@@ -1,42 +1,27 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import HomePage from "./HomePage/HomePage";
-
-import $ from "jquery";
-import { TroveControllers } from "../Controller/TroveControllers";
 
 import Controller from "../Controller/Controller.tsx";
 import VisualObject from "./ItcHyFeeL/VisualObject.tsx";
 import Element from "./ItcHyFeeL/Element.tsx";
+import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
+import ShowPokimonController from "../Controller/ShowPokimonController.tsx";
+import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
+import AuthReg from "./AuthReg/AuthReg.tsx";
 
 class AppVisual extends VisualObject {
-    private troveController: TroveControllers;
-    private controllerUpdate: Controller | null = null;
-    private pokimon: number = 0;
-    private homePage: HomePage;
-
-    constructor(troveController: TroveControllers) {
+    constructor() {
         super();
-        this.troveController = troveController;
-        this.controllerUpdate = this.troveController.getShowPokimonController();
+        this.controllerUpdate = new ShowPokimonController();
         this.homePage = new HomePage();
     }
 
     render() {
         return (
             <Router>
-                <nav>
-                    <Link to="/">Home</Link>
-                </nav>
-                <div>
-                    <h2>Pokimon from this component: {this.pokimon}</h2>
-                    {/* Отображает pokimon из этого класса */}
-                    <button id="external-button">
-                        Increase Pokimon
-                    </button>
-                </div>
                 <Routes>
-                    {/*<Route path="/" element={<HomePage visualSetUp={{setVisualObject: this.setVisualObject.bind(this)}} troveController={this.troveController}/>}/>*/}
                     <Route path="/" element={<Element instance={this.homePage} />} />
+                    <Route path="/authreg" element={<Element instance={new AuthReg()} />} />
                 </Routes>
             </Router>
         );
@@ -47,11 +32,7 @@ class AppVisual extends VisualObject {
             this.controllerUpdate.performe();
         }
 
-        const buttonClickerController = this.troveController.getButtonClickerController();
-
-        $(`#${'external-button'}`).off().on('click', () => {
-            buttonClickerController.performe();
-        });
+        this.button.setActionController(new ButtonClickerController());
 
         console.log('update');
     }
@@ -60,10 +41,20 @@ class AppVisual extends VisualObject {
         console.log('disable');
     }
 
-    setPokimon(value: number) {
-        this.pokimon = value;
-        this.forceUpdate();
-    }
+     setPokimon(value: number) {
+        console.log(value);
+   // //     this.pokimon = value;
+   //      this.forceUpdate();
+     }
+
+
+    private button: Button = new Button();
+
+    private controllerUpdate: Controller | null = null;
+  //  private pokimon: number = 0;
+
+    // Все страницы
+    private homePage: HomePage;
 }
 
 export default AppVisual;

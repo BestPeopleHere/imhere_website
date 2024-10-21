@@ -7,6 +7,7 @@
   "compilerOptions": {
     "jsx": "react-jsx", // или "react" для старых версий React (<17)
     "forceConsistentCasingInFileNames": true,
+    "types": ["node", "uuid"],
     // другие настройки...
   },
 }

@@ -7,12 +7,15 @@ interface ElementProps {
     instance: VisualObject;
 }
 
-function Element(props: ElementProps) {
+function Element(props: ElementProps)
+{
     const navigate = useNavigate();
     const params = useParams();
 
+
     const { instance } = props;
     if (instance instanceof VisualObject) {
+
         return (
             <InstanceRender
                 {...props}

@@ -1,18 +1,13 @@
-import { StratumController } from "./StratumController";
-import BusinessLogic from "../BusinessLogic/BusinessLogic";
-import Visual from "../Visual/Visual";
+import Controller from "./Controller.tsx";
+import Data from "./Data.tsx";
 
-class ShowPokimonController extends StratumController {
-    constructor(bc: BusinessLogic, visual: Visual) {
-        super(bc, visual);
-    }
-
+class ShowPokimonController extends Controller {
     async performe(): Promise<void> {
         console.log("performe ShowPokimonController");
 
-        const pokimon = await this.getBc().getPokimon();
+        const pokimon = await Data.bc.getPokimon();
         console.log("pokimon: ", pokimon);
-        this.getVisual().drawPokimon(pokimon);
+        Data.visual.drawPokimon(pokimon);
     }
 }
 
