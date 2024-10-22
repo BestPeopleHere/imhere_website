@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 import HomePage from "./HomePage/HomePage";
 
 import Controller from "../Controller/Controller.tsx";
@@ -19,9 +19,22 @@ class AppVisual extends VisualObject {
     render() {
         return (
             <Router>
+            <nav>
+                    <Link to="/">Home</Link>
+                </nav>
+                <div>
+                    <h2>Pokimon from this component: {this.pokimon}</h2>
+
+                    <Element instance={this.button}/>
+
+                    <button id="external-button">
+                        Increase Pokimon
+                    </button>
+                </div>
+
                 <Routes>
-                    <Route path="/" element={<Element instance={this.homePage} />} />
-                    <Route path="/authreg" element={<Element instance={new AuthReg()} />} />
+                    <Route path="/authreg" element={<Element instance={this.homePage} />} />
+                    <Route path="/" element={<Element instance={new AuthReg()} />} />
                 </Routes>
             </Router>
         );
@@ -43,15 +56,15 @@ class AppVisual extends VisualObject {
 
      setPokimon(value: number) {
         console.log(value);
-   // //     this.pokimon = value;
-   //      this.forceUpdate();
+        this.pokimon = value;
+        this.forceUpdate();
      }
 
 
     private button: Button = new Button();
 
     private controllerUpdate: Controller | null = null;
-  //  private pokimon: number = 0;
+    private pokimon: number = 0;
 
     // Все страницы
     private homePage: HomePage;
