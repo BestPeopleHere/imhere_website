@@ -5,6 +5,7 @@ import VisualObject from "./VisualObject";
 
 interface ElementProps {
     instance: VisualObject;
+    className?: string;
 }
 
 function Element(props: ElementProps)

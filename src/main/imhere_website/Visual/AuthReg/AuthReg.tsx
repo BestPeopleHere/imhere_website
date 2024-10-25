@@ -1,31 +1,43 @@
+import './AuthReg.css';
 import VisualObject from "../ItcHyFeeL/VisualObject.tsx";
-import Element from "../ItcHyFeeL/Element.tsx";
+import PasswordInput from './Elements/PasswordInPut.tsx';
+import ButtonLogin from './Elements/ButtonLogin';
+import ButtonCreate from './Elements/ButtonCreate';
 import Button from "../ItcHyFeeL/DoneElements/Button.tsx";
-import ShowController from "../../Controller/ShowController.tsx";
+import Element from "../ItcHyFeeL/Element.tsx";
+import EmailInPut from "./Elements/EmailInPut.tsx";
 
-class AuthReg extends VisualObject {
+class Main extends VisualObject {
     constructor() {
         super();
-        this.button = new Button();
+
+        this.logButton=new Button();
+        //this.logButton.setClassName('Button-2');
     }
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <p>SOOOOOOOOOOOOS!!!</p>
-                </header>
-                <Element instance={this.button}/>
+            <div className='main-container'>
+                <span className='text'>ImHere</span>
+
+                <Element instance={new EmailInPut()} className='Button'/>
+
+                <div className='pic'>
+                    <div className='pic-2'/>
+                </div>
+
+                <button className='Button-2'/>
+                <div className='img-3'/>
+
+                <Element instance={new PasswordInput()} className='rectangle'/>
+                <Element instance={new ButtonLogin()} className='log-in'/>
+                <Element instance={new ButtonCreate()} className='create-account'/>
+
             </div>
         );
     }
 
-    readyToBeRendered() {
-        //Запускается при подготовке к работе.
-        this.button.setActionController(new ShowController());
-    }
-
-    button: Button;
+    logButton: Button;
 }
 
-export default AuthReg;
+export default Main;

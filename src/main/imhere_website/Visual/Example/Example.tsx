@@ -21,17 +21,3 @@ class Example extends VisualObject {
 }
 
 export default Example;
-
-
-// <nav>
-//     <Link to="/">Home</Link>
-// </nav>
-// <div>
-//     <h2>Pokimon from this component: {this.pokimon}</h2>
-//
-//     <Element instance={this.button}/>
-//
-//     <button id="external-button">
-//         Increase Pokimon
-//     </button>
-// </div>

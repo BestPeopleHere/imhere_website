@@ -10,7 +10,7 @@ class Button extends DoneElement {
     render() {
         return (
             <button id={this.id} className={this.className}>
-                Жмопка
+                {this.text}
             </button>
         );
     }
@@ -24,6 +24,13 @@ class Button extends DoneElement {
         });
     }
 
+    public setText(text: string)
+    {
+        this.text = text;
+        this.forceUpdate();
+    }
+
+    text: string="Жмопка";
     controller: Controller|null = null;
 }
 

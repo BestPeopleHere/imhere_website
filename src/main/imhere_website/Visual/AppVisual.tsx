@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import HomePage from "./HomePage/HomePage";
 
 import Controller from "../Controller/Controller.tsx";
@@ -19,19 +19,6 @@ class AppVisual extends VisualObject {
     render() {
         return (
             <Router>
-            <nav>
-                    <Link to="/">Home</Link>
-                </nav>
-                <div>
-                    <h2>Pokimon from this component: {this.pokimon}</h2>
-
-                    <Element instance={this.button}/>
-
-                    <button id="external-button">
-                        Increase Pokimon
-                    </button>
-                </div>
-
                 <Routes>
                     <Route path="/authreg" element={<Element instance={this.homePage} />} />
                     <Route path="/" element={<Element instance={new AuthReg()} />} />
