@@ -66,9 +66,10 @@ class BusinessLogic {
                 throw new Error(`Server error: ${response.status}`);
             }
 
-            const data: void = await response.json(); // Получаем данные как AuthenticationResponse
+            const data = await response.json(); // Получаем данные как AuthenticationResponse
+            this.token = data.access_token;
 
-            console.log("data: ",data);
+            console.log("data: ",data.access_token);
 
             return "data"; // Возвращаем данные
 
@@ -97,16 +98,9 @@ class BusinessLogic {
                 throw new Error(`Server error: ${response.status}`);
             }
 
-            let data = {
-                token: {
-                    access_token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcyOTczOTU1NSwiZXhwIjoxNzI5NzQwMTU1fQ.mTmpqqftB-xgQXX9glk7FbEhRQwG9fQB3-sOUwq-Tps"
-                },
-                id: 1
-            };
+            const data   = await response.json(); // Получаем данные как AuthenticationResponse
 
-            data = await response.json(); // Получаем данные как AuthenticationResponse
-
-            this.token = data.token.access_token;
+            this.token = data.access_token;
 
             // const decodedToken = jwt_decode(this.token);
             //

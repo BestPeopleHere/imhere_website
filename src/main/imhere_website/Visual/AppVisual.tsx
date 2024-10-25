@@ -8,6 +8,7 @@ import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
 import ShowPokimonController from "../Controller/ShowPokimonController.tsx";
 import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
+import Reg from "./Reg/Reg.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -19,8 +20,11 @@ class AppVisual extends VisualObject {
     render() {
         return (
             <Router>
+
+                <Element instance={this.button}/>
+
                 <Routes>
-                    <Route path="/authreg" element={<Element instance={this.homePage} />} />
+                    <Route path="/authreg" element={<Element instance={new Reg()} />} />
                     <Route path="/" element={<Element instance={new AuthReg()} />} />
                 </Routes>
             </Router>
@@ -33,6 +37,7 @@ class AppVisual extends VisualObject {
         }
 
         this.button.setActionController(new ButtonClickerController());
+        this.button.setText("test to connect with backend");
 
         console.log('update');
     }

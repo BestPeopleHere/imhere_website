@@ -5,7 +5,7 @@ class RegController extends Controller {
     async performe(): Promise<void> {
         console.log("performe RegController");
 
-        await Data.bc.registerUser("1","1");
+        await Data.bc.registerUser("example@gmail.com","123456789");
     }
 }
 
