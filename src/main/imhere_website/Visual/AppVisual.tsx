@@ -9,7 +9,7 @@ import ShowPokimonController from "../Controller/ShowPokimonController.tsx";
 import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
-// k
+// kр
 class AppVisual extends VisualObject {
     constructor() {
         super();
