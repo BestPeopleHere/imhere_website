@@ -15,6 +15,7 @@ class AppVisual extends VisualObject {
         super();
         this.controllerUpdate = new ShowPokimonController();
         this.homePage = new HomePage();
+        this.authReg = new AuthReg();
     }
 
     render() {
@@ -22,10 +23,10 @@ class AppVisual extends VisualObject {
             <Router>
 
                 <Element instance={this.button}/>
-
+                {/*<button onClick={this.showErrorModal.bind(this)}>Показать окно с ошибкой</button>*/}
                 <Routes>
-                    <Route path="/authreg" element={<Element instance={new Reg()} />} />
-                    <Route path="/" element={<Element instance={new AuthReg()} />} />
+                    <Route path="/authreg" element={<Element instance={new Reg()}/>}/>
+                    <Route path="/" element={<Element instance={this.authReg}/>}/>
                 </Routes>
             </Router>
         );
@@ -52,6 +53,13 @@ class AppVisual extends VisualObject {
         this.forceUpdate();
      }
 
+    // showErrorModal() {
+    //     const errorMessage = "Это тестовое сообщение об ошибке.";
+    //     const errorModal = new ErrorModal(errorMessage);
+    //     // Предполагается, что Data.visual имеет метод render
+    //     Data.visual.render(errorModal.render());
+    // }
+
 
     private button: Button = new Button();
 
@@ -60,6 +68,7 @@ class AppVisual extends VisualObject {
 
     // Все страницы
     private homePage: HomePage;
+    public authReg: AuthReg;
 }
 
 export default AppVisual;

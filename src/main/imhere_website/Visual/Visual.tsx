@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import AppVisual from './AppVisual';
 import ElementWithoutRouter from "./ItcHyFeeL/ElementWithoutRouter.tsx";
+import appVisual from "./AppVisual";
 
 
 class Visual {
@@ -24,6 +25,12 @@ class Visual {
             this.appVisual.setPokimon(value);
         }
     }
+    drawError(errorMassage:string): void{
+        this.appVisual?.authReg.error.show(errorMassage);
+    }
+
+
+
 }
 
 export default Visual;
