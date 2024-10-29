@@ -1,41 +1,43 @@
+import './Reg.css';
 import VisualObject from "../ItcHyFeeL/VisualObject.tsx";
-import Element from "../ItcHyFeeL/Element.tsx";
+import PasswordInput from './Elements/PasswordInPut.tsx';
+import ButtonCreate from './Elements/ButtonCreate';
 import Button from "../ItcHyFeeL/DoneElements/Button.tsx";
+import Element from "../ItcHyFeeL/Element.tsx";
+import EmailInPut from "./Elements/EmailInPut.tsx";
+import NicknameInput from "./Elements/NicknameInput.tsx";
+import BirthDayInput from "./Elements/BirthDayInput.tsx";
+import GenderSelector from "./Elements/MaleOrFemale.tsx";
 
-import RegController from "../../Controller/RegController.tsx";
-import AuthController from "../../Controller/AuthController.tsx";
+class Main extends VisualObject {
 
-class Reg extends VisualObject {
     constructor() {
         super();
 
-        this.buttonReg = new Button();
-        this.buttonAuth = new Button();
-
-        this.buttonReg.setText("reg");
-        this.buttonAuth.setText("aph");
-
+        this.logButton=new Button();
+        //this.logButton.setClassName('Button-2');
     }
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <p>Желаю всем искателям конфетки преобрести ириски деток</p>
-                </header>
-                <Element instance={this.buttonReg}/>
-                <Element instance={this.buttonAuth}/>
+            <div className='main-container'>
+                <span className='text'>ImHere</span>
+
+                <Element instance={new NicknameInput()} className=''/>
+
+                <Element instance={new GenderSelector()} className='selected-gender'/>
+
+                <Element instance={new EmailInPut()} className='Button'/>
+
+                <Element instance={new PasswordInput()} className='rectangle'/>
+
+                <Element instance={new ButtonCreate()} className='create-account'/>
+
             </div>
         );
     }
 
-    readyToBeRendered() {
-        this.buttonReg.setActionController(new RegController());
-        this.buttonAuth.setActionController(new AuthController());
-    }
-
-    buttonReg: Button;
-    buttonAuth: Button;
+    logButton: Button;
 }
 
-export default Reg;
+export default Main;

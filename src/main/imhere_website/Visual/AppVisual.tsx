@@ -25,6 +25,7 @@ class AppVisual extends VisualObject {
 
                 <Routes>
                     <Route path="/authreg" element={<Element instance={new Reg()} />} />
+                    <Route path="/reg" element={<Element instance={new Reg()} />} />
                     <Route path="/" element={<Element instance={new AuthReg()} />} />
                 </Routes>
             </Router>
