@@ -1,8 +1,8 @@
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import React from "react";
 
-class Example extends VisualObject {
-    constructor() {
+class PasswordInput extends VisualObject {
+    constructor(private onPasswordChange: (password: string) => void) {
         super();
     }
 
@@ -26,26 +26,14 @@ class Example extends VisualObject {
                         color: '#D14C7B',
                     }}
                 />
-                {/*<div>{this.password}</div>*/}
-                {/* Отображаем значение password */}
             </div>
         );
     }
 
-
-
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.password = event.target.value;
+    private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const password = event.target.value;
+        this.onPasswordChange(password);
     };
-
-
-    readyToBeRendered() {
-        //Запускается при подготовке к работе.
-    }
-
-
-    private password: string = '';
 }
 
-export default Example;
+export default PasswordInput;

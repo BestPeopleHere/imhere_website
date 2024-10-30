@@ -1,27 +1,27 @@
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 
 class ButtonCreate extends VisualObject {
-    constructor() {
+    constructor(private onClick: () => void) {
         super();
     }
 
     render() {
-
         const buttonStyle = {
             textDecoration: 'underline',
             color: '#FFFF',
-            cursor: 'pointer',  };
+            cursor: 'pointer',
+        };
 
         return (
-            <span style={buttonStyle}>
-            Create Account
+            <span style={buttonStyle} onClick={this.handleClick}>
+                Create Account
             </span>
         );
     }
 
-    readyToBeRendered() {
-        //Запускается при подготовке к работе.
-    }
+    private handleClick = () => {
+        this.onClick(); // Вызываем переданный обработчик
+    };
 }
 
 export default ButtonCreate;

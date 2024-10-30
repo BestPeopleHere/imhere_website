@@ -1,8 +1,8 @@
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import React from "react";
 
-class Example extends VisualObject {
-    constructor() {
+class EmailInput extends VisualObject {
+    constructor(private onEmailChange: (email: string) => void) {
         super();
     }
 
@@ -27,23 +27,14 @@ class Example extends VisualObject {
                         color: '#D14C7B',
                     }}
                 />
-                {/*<div>{this.email}</div>*/}
-                {/* Отображаем значение email */}
             </div>
         );
     }
 
-    readyToBeRendered() {
-        //Запускается при подготовке к работе.
-    }
-
-
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.email = event.target.value;
+    private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const email = event.target.value;
+        this.onEmailChange(email);
     };
-
-    private email: string = '';
 }
 
-export default Example;
+export default EmailInput;
