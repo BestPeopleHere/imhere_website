@@ -3,9 +3,8 @@ import { createRoot } from 'react-dom/client';
 import AppVisual from './AppVisual';
 import ElementWithoutRouter from "./ItcHyFeeL/ElementWithoutRouter.tsx";
 
-
 class Visual {
-    private appVisual: AppVisual | undefined;
+
 
     draw(): void
     {
@@ -21,9 +20,22 @@ class Visual {
     drawPokimon(value: any): void {
         if (this.appVisual instanceof AppVisual) {
             console.log('drawPokimon');
-            this.appVisual.setPokimon(value);
+            this.appVisual.homePage.setPokemonCount(value);
         }
     }
+
+    toMain()
+    {
+        this.appVisual?.authReg.navigate('/home');
+        this.appVisual?.authReg.update();
+    }
+
+    toReg()
+    {
+        this.appVisual?.reg.navigate('/');
+    }
+
+    public appVisual: AppVisual | undefined;
 }
 
 export default Visual;

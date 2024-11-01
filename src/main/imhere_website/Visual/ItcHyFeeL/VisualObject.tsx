@@ -5,7 +5,7 @@
 import InstanceRender from "./InstanceRender.tsx";
 
 class VisualObject {
-    private instanceRenderer: InstanceRender | null = null;
+
 
     render() {
         return (
@@ -29,6 +29,23 @@ class VisualObject {
             this.instanceRenderer.forceUpdate();
         }
     }
+
+    navigate(path: string)
+    {
+        if (this.instanceRenderer?.navigate!=undefined) {
+            this.instanceRenderer?.navigate(path);
+        }
+    }
+
+    update()
+    {
+        if (this.instanceRenderer?.navigate!=undefined) {
+            this.instanceRenderer?.navigate(0);
+        }
+    }
+
+    private instanceRenderer: InstanceRender | null = null;
+
 }
 
 export default VisualObject;

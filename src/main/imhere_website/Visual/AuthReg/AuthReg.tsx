@@ -6,21 +6,31 @@ import ButtonCreate from './Elements/ButtonCreate';
 import Button from "../ItcHyFeeL/DoneElements/Button.tsx";
 import Element from "../ItcHyFeeL/Element.tsx";
 import EmailInPut from "./Elements/EmailInPut.tsx";
+import ButtonNavigateController from "../../Controller/ButtonNavigateController.tsx";
+import ErrorModal from "./Elements/ErrorModal.tsx";
+import AuthController from "../../Controller/AuthController.tsx";
+import RegController from "../../Controller/RegController.tsx";
+import Input from "../ItcHyFeeL/DoneElements/Input.tsx";
 
-class Main extends VisualObject {
+class AuthReg extends VisualObject {
     constructor() {
+
         super();
 
-        this.logButton=new Button();
+        this.logButton=new ButtonLogin();
+        this.createButton=new ButtonCreate();
+        this.passwordInput=new PasswordInput();
+        this.emailInput=new EmailInPut();
         //this.logButton.setClassName('Button-2');
+
+        this.error = new ErrorModal("все плохо");
+       // this.error.show("2222222222");
     }
 
     render() {
         return (
             <div className='main-container'>
                 <span className='text'>ImHere</span>
-
-                <Element instance={new EmailInPut()} className='Button'/>
 
                 <div className='pic'>
                     <div className='pic-2'/>
@@ -29,15 +39,40 @@ class Main extends VisualObject {
                 <button className='Button-2'/>
                 <div className='img-3'/>
 
-                <Element instance={new PasswordInput()} className='rectangle'/>
-                <Element instance={new ButtonLogin()} className='log-in'/>
-                <Element instance={new ButtonCreate()} className='create-account'/>
+                <Element instance={this.emailInput} className='Button'/>
+                <Element instance={this.passwordInput} className='rectangle'/>
+
+                <Element instance={this.logButton} className='log-in'/>
+                <Element instance={this.createButton} className='create-account'/>
+
+                <Element instance={this.button}/>
+
+                <Element instance={this.error}/>
 
             </div>
         );
     }
 
-    logButton: Button;
+    readyToBeRendered() {
+
+        this.logButton.setActionController(new AuthController());
+        this.createButton.setActionController(new RegController());
+
+        this.passwordInput.setPlaceholder("Пароль");
+        this.emailInput.setPlaceholder("Электронная почта");
+    }
+
+    drawError(errorMessage: string)
+    {
+        this.error.show(errorMessage);
+    }
+
+    logButton: ButtonLogin;
+    createButton: ButtonCreate;
+    button: Button=new Button();
+    error : ErrorModal;
+    passwordInput: PasswordInput;
+    emailInput: EmailInPut;
 }
 
-export default Main;
+export default AuthReg;

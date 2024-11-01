@@ -112,20 +112,20 @@ button {
     z-index: 10;
     overflow: hidden;
 }
-.Button-2 {
-    position: absolute;
-    width: 75px;
-    height: 75px;
-    top: 562px;
-    left: 1223px;
-    cursor: pointer;
-    background: transparent;
-    background: no-repeat center;
-    background-size: cover;
-    border: none;
-    z-index: 8;
-    border-radius: 50%;
-}
+/*.Button-2 {*/
+/*    position: absolute;*/
+/*    width: 75px;*/
+/*    height: 75px;*/
+/*    top: 562px;*/
+/*    left: 1223px;*/
+/*    cursor: pointer;*/
+/*    background: transparent;*/
+/*    background: no-repeat center;*/
+/*    background-size: cover;*/
+/*    border: none;*/
+/*    z-index: 8;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 .rectangle {
     position: absolute;
@@ -135,11 +135,7 @@ button {
     z-index: 3;
 }
 
-.log-in {
-    position: absolute;
-    top: 558px;
-    left: 1240px;
-}
+
 .create-account {
     position: absolute;
     top: 655px;

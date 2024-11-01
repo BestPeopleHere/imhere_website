@@ -13,7 +13,6 @@ function Element(props: ElementProps)
     const navigate = useNavigate();
     const params = useParams();
 
-
     const { instance } = props;
     if (instance instanceof VisualObject) {
 
@@ -28,6 +27,8 @@ function Element(props: ElementProps)
         console.log("Man? It is not VisualObject! ", instance);
         return null;
     }
+
+
 }
 
 export default Element;

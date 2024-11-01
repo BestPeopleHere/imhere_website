@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, NavigateFunction, Route, Routes, useNavigate} from 'react-router-dom';
 import HomePage from "./HomePage/HomePage";
 
 import Controller from "../Controller/Controller.tsx";
@@ -15,6 +15,8 @@ class AppVisual extends VisualObject {
         super();
         this.controllerUpdate = new ShowPokimonController();
         this.homePage = new HomePage();
+
+
     }
 
     render() {
@@ -22,10 +24,12 @@ class AppVisual extends VisualObject {
             <Router>
 
                 <Element instance={this.button}/>
+                {/*<Element instance={new Button()}/>*/}
 
                 <Routes>
-                    <Route path="/authreg" element={<Element instance={new Reg()} />} />
-                    <Route path="/" element={<Element instance={new AuthReg()} />} />
+                    <Route path="/authreg" element={<Element instance={this.reg} />} />
+                    <Route path="/" element={<Element instance={this.authReg} />} />
+                    <Route path="/home" element={<Element instance={this.homePage} />} />
                 </Routes>
             </Router>
         );
@@ -53,13 +57,20 @@ class AppVisual extends VisualObject {
      }
 
 
+
+
     private button: Button = new Button();
 
     private controllerUpdate: Controller | null = null;
     private pokimon: number = 0;
 
     // Все страницы
-    private homePage: HomePage;
+    public homePage: HomePage;
+
+    public authReg: AuthReg=new AuthReg();
+    public reg: Reg=new Reg();
+
+  //  navigate: NavigateFunction = useNavigate();
 }
 
 export default AppVisual;

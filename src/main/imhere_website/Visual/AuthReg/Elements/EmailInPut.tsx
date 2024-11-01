@@ -1,49 +1,36 @@
-import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
-import React from "react";
+import Input from "../../ItcHyFeeL/DoneElements/Input.tsx";
+import $ from "jquery";
 
-class Example extends VisualObject {
+class EmailInput extends Input {
     constructor() {
         super();
     }
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                <input
-                    type="email"
-                    placeholder="Твоя электронная почта или никнейм"
-                    onChange={this.handleChange}
-                    style={{
-                        width: '400px',
-                        height: '70px',
-                        borderRadius: '50px',
-                        border: '1px solid #ccc',
-                        padding: '10px',
-                        paddingLeft: '32px',
-                        fontSize: '16px',
-                        fontWeight: '500',
-                        outline: 'none',
-                        backgroundColor: 'white',
-                        color: '#D14C7B',
-                    }}
-                />
-                {/*<div>{this.email}</div>*/}
-                {/* Отображаем значение email */}
+            <div className={this.className}>
+                <div className="example-container">
+                    <input
+                        className="example-input"
+                        id={this.id}
+                        placeholder={this.placeholder}
+                    />
+                </div>
             </div>
         );
     }
 
     readyToBeRendered() {
-        //Запускается при подготовке к работе.
+
+        $(`#${this.id}`).off().on('input', (event) => {
+            this.value= (event.target as HTMLInputElement).value;
+        });
     }
 
-
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.email = event.target.value;
-    };
-
-    private email: string = '';
+    public getValue(): string
+    {
+        return this.value;
+    }
 }
 
-export default Example;
+export default EmailInput;

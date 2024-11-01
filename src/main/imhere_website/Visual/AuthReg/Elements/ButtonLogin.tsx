@@ -1,32 +1,47 @@
-import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
+import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
+import Controller from "../../../Controller/Controller.tsx";
+import $ from "jquery";
 
-class ButtonLogin extends VisualObject {
+class ButtonLogin extends Button {
     constructor() {
         super();
     }
 
     render() {
 
-        const buttonStyle = {
-            width: '75px',
-            height: '75px',
-            borderRadius: '50%', backgroundColor: '#FF82E0',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center', };
-
         return (
-            <button style={buttonStyle}>
-                <span style={{color: 'white', fontWeight: 'bold', fontSize: '14px'}}>Log in</span>
+            <button id={this.id} className={this.className} onMouseLeave={this.handleMouseLeave}>
+                <span className="log-in-text"  style={{color: 'white', fontWeight: 'bold', fontSize: '14px'}}>Log in</span>
             </button>
         );
     }
 
     readyToBeRendered() {
-        //Запускается при подготовке к работе.
+
     }
+
+    public setActionController(controller: Controller)
+    {
+        console.log(controller);
+
+        this.controller = controller;
+
+        $(`#${this.id}`).off().on('click', () => {
+            controller.performe();
+        });
+    }
+
+
+    private handleMouseLeave = () => {
+        const button = document.getElementById(this.id);
+        if (button) {
+            button.classList.add("wobble-animation");
+            button.addEventListener("animationend", () => {
+                button.classList.remove("wobble-animation");
+            }, { once: true });
+        }
+    };
+
 }
 
 export default ButtonLogin;

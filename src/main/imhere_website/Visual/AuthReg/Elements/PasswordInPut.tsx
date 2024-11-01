@@ -1,51 +1,39 @@
-import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
-import React from "react";
+import $ from "jquery";
+import Input from "../../ItcHyFeeL/DoneElements/Input.tsx";
 
-class Example extends VisualObject {
+class PasswordInput extends Input {
     constructor() {
         super();
     }
 
     render() {
         return (
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+            <div className={this.className}>
+            <div className="example-container">
                 <input
                     type="password"
-                    placeholder="Пароль"
-                    onChange={this.handleChange}
-                    style={{
-                        width: '400px',
-                        height: '70px',
-                        borderRadius: '50px',
-                        border: '1px solid #ccc',
-                        paddingLeft: '32px',
-                        fontSize: '16px',
-                        fontWeight: '500',
-                        outline: 'none',
-                        backgroundColor: 'white',
-                        color: '#D14C7B',
-                    }}
+                    className="example-input"
+                    id={this.id}
+                    placeholder={this.placeholder}
                 />
-                {/*<div>{this.password}</div>*/}
-                {/* Отображаем значение password */}
+            </div>
             </div>
         );
     }
 
-
-
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.password = event.target.value;
-    };
-
-
     readyToBeRendered() {
-        //Запускается при подготовке к работе.
+
+        $(`#${this.id}`).off().on('input', (event) => {
+            this.value= (event.target as HTMLInputElement).value;
+        });
     }
 
 
-    private password: string = '';
+
+    public getValue(): string
+    {
+        return this.value;
+    }
 }
 
-export default Example;
+export default PasswordInput;

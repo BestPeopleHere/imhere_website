@@ -19,16 +19,15 @@ class InstanceRender extends Component<InstanceRenderProps> {
         super(props);
 
         const { instance, className,
-          //  navigate, params
+            navigate//, params
         } = this.props;
+
+        this.navigate = navigate;
+
 
         this.instance = instance;
         this.className = className;
 
-       // if (navigate && params) {
-          //  this.navigate = navigate;
-          //  this.params = params;
-      //  }
 
         this.instance.setInstanceRenderer(this);
     }
@@ -63,6 +62,9 @@ class InstanceRender extends Component<InstanceRenderProps> {
 
 
     private className: string | undefined = undefined;
+
+    navigate: NavigateFunction | undefined = undefined;
+
 }
 
 export default InstanceRender;

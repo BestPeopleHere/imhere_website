@@ -4,19 +4,19 @@
 class BusinessLogic {
     constructor() {}
 
-
-
-
     async addPokimon(): Promise<void> {
         try {
-            const response = await fetch('http://localhost:8080/api/add/pokimon', {
+            const response = await fetch('https://imhere.space:5656/api/add/pokimon', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${this.token}`, // Вставляем токен в заголовок Authorization
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`, // Вставляем токен в заголовок Authorization
                     'Content-Type': 'application/json'  // Можно добавить Content-Type, если это требуется
                 }
             });
-            const data = await response.json();
+
+            console.log("token: ",sessionStorage.getItem('token'));
+
+            const data = response.headers.get("Content-Length") === "0" ? null : await response.json();
             console.log(data);
         } catch (error) {
             console.error('Error:', error);
@@ -25,13 +25,15 @@ class BusinessLogic {
 
     async getPokimon(): Promise<string | null> {
         try {
-            const response = await fetch('http://localhost:8080/api/count/pokimon', {
+            const response = await fetch('https://imhere.space:5656/api/auth/count/pokimon', {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${this.token}`, // Вставляем токен в заголовок Authorization
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`, // Вставляем токен в заголовок Authorization
                     'Content-Type': 'application/json'  // Можно добавить Content-Type, если это требуется
                 }
             });
+
+
 
             if (!response.ok) {
                 throw new Error('Could not fetch');
@@ -46,7 +48,7 @@ class BusinessLogic {
         }
     }
 
-    async registerUser(email: string, password: string): Promise<string>
+    async registerUser(email: string | undefined, password: string| undefined): Promise<string | null>
     {
         const user = {
             email: email,
@@ -54,7 +56,7 @@ class BusinessLogic {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/auth/register', {
+            const response = await fetch('https://imhere.space:5656/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Указываем, что данные в формате JSON
@@ -68,6 +70,7 @@ class BusinessLogic {
 
             const data = await response.json(); // Получаем данные как AuthenticationResponse
             this.token = data.access_token;
+            sessionStorage.setItem('token', this.token);
 
             console.log("data: ",data.access_token);
 
@@ -75,18 +78,18 @@ class BusinessLogic {
 
         } catch (error) {
             console.error('Error during registration:', error);
-            return "netu" ; // Возвращаем объект с сообщением об ошибке
+            return null; // Возвращаем объект с сообщением об ошибке
         }
     }
 
-    async authUser(email: string, password: string): Promise<string> {
+    async authUser(email: string | undefined, password: string| undefined): Promise<string|null> {
         const user = {
             email: email,
             password: password,
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/auth/authenticate', {
+            const response = await fetch('https://imhere.space:5656/api/auth/authenticate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Указываем, что данные в формате JSON
@@ -101,6 +104,7 @@ class BusinessLogic {
             const data   = await response.json(); // Получаем данные как AuthenticationResponse
 
             this.token = data.access_token;
+            sessionStorage.setItem('token', this.token);
 
             // const decodedToken = jwt_decode(this.token);
             //
@@ -114,7 +118,7 @@ class BusinessLogic {
 
         } catch (error) {
             console.error('Error during registration:', error);
-            return "netu" ; // Возвращаем объект с сообщением об ошибке
+            return null; // Возвращаем объект с сообщением об ошибке
         }
     }
 
