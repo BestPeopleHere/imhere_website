@@ -5,9 +5,31 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
     "jsx": "react-jsx", // или "react" для старых версий React (<17)
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "uuid"],
-    // другие настройки...
+
+    // Строгие проверки TypeScript
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

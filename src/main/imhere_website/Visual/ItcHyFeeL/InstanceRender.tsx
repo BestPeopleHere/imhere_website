@@ -1,16 +1,22 @@
 import { Component, ReactNode } from "react";
 import VisualObject from "./VisualObject";
-import { NavigateFunction, Params } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
 import DoneElement from "./DoneElements/DoneElement.tsx";
 
 interface InstanceRenderProps {
     instance: VisualObject;
     className?: string;
      navigate?: NavigateFunction;
-     params?: Params;
+     //params?: Params;
 }
 
+const defaultProps: Partial<InstanceRenderProps> = {
+    navigate: undefined,
+};
+
 class InstanceRender extends Component<InstanceRenderProps> {
+
+    static defaultProps = defaultProps;
     private instance: VisualObject;
   //  private navigate: NavigateFunction | null = null;
    // private params: Params | null = null;
@@ -19,7 +25,7 @@ class InstanceRender extends Component<InstanceRenderProps> {
         super(props);
 
         const { instance, className,
-            navigate//, params
+            navigate = undefined//, params = undefined
         } = this.props;
 
         this.navigate = navigate;
@@ -60,11 +66,8 @@ class InstanceRender extends Component<InstanceRenderProps> {
         this.instance.readyToBeRendered();
     }
 
-
     private className: string | undefined = undefined;
-
     navigate: NavigateFunction | undefined = undefined;
-
 }
 
 export default InstanceRender;

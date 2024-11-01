@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import InstanceRender from './InstanceRender.tsx';
 import VisualObject from "./VisualObject";
 //import VisualObject from "./VisualObject";
@@ -11,7 +11,7 @@ interface ElementProps {
 function Element(props: ElementProps)
 {
     const navigate = useNavigate();
-    const params = useParams();
+   // const params = useParams();
 
     const { instance } = props;
     if (instance instanceof VisualObject) {
@@ -20,7 +20,7 @@ function Element(props: ElementProps)
             <InstanceRender
                 {...props}
                 navigate={navigate}
-                params={params}
+               // params={params}
             />
         );
     } else {

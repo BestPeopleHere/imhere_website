@@ -29,7 +29,7 @@ class HomePage extends VisualObject {
         this.buttonAddPokemon.setActionController(new ButtonClickerController());
     }
 
-    setPokemonCount(count: number) {
+    setPokemonCount(count: string) {
         this.pokemonCount = count;
         this.forceUpdate();
     }
@@ -37,7 +37,7 @@ class HomePage extends VisualObject {
 
 
     private buttonAddPokemon: Button;
-    private pokemonCount: number = 0;
+    private pokemonCount: string = '0';
 }
 
 export default HomePage;

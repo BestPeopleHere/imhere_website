@@ -6,11 +6,9 @@ import ButtonCreate from './Elements/ButtonCreate';
 import Button from "../ItcHyFeeL/DoneElements/Button.tsx";
 import Element from "../ItcHyFeeL/Element.tsx";
 import EmailInPut from "./Elements/EmailInPut.tsx";
-import ButtonNavigateController from "../../Controller/ButtonNavigateController.tsx";
 import ErrorModal from "./Elements/ErrorModal.tsx";
 import AuthController from "../../Controller/AuthController.tsx";
 import RegController from "../../Controller/RegController.tsx";
-import Input from "../ItcHyFeeL/DoneElements/Input.tsx";
 
 class AuthReg extends VisualObject {
     constructor() {

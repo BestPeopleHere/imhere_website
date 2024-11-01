@@ -12,9 +12,14 @@ class ButtonClickerController extends Controller {
 
         await Data.bc.addPokimon();
 
-        const pokimon = await Data.bc.getPokimon();
+        const pokimon: string|null = await Data.bc.getPokimon();
         console.log("pokimon: ", pokimon);
-        Data.visual.drawPokimon(pokimon);
+
+        if (pokimon!=null) {
+            Data.visual.drawPokimon(pokimon);
+        }
+
+
     }
 }
 
