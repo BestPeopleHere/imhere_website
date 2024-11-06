@@ -17,6 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["node", "uuid"],
 
+    "declaration": true,
+
     // Строгие проверки TypeScript
     "strict": true,
     "noImplicitAny": true,
