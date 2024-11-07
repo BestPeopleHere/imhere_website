@@ -1,0 +1,44 @@
+.log-in {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #FF82E0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 558px;
+    left: 1240px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.log-in:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Усиленная тень */
+}
+
+.log-in:active {
+    transform: scale(0.95); /* Легкое уменьшение при нажатии */
+}
+
+.log-in:focus {
+    outline: none; /* Убираем обводку */
+}
+
+/* Анимация колебаний при выходе мыши */
+@keyframes wobble {
+    0% { transform: scale(1) rotate(0deg); }
+    15% { transform: scale(1) rotate(5deg); }
+    30% { transform: scale(1) rotate(-5deg); }
+    45% { transform: scale(1) rotate(3deg); }
+    60% { transform: scale(1) rotate(-3deg); }
+    75% { transform: scale(1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.log-in.wobble-animation {
+    animation: wobble 0.6s ease-in-out;
+}
