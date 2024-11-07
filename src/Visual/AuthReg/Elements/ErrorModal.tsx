@@ -1,7 +1,7 @@
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 // import Element from "../../ItcHyFeeL/Element.tsx";
 import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
-// import './ErrorModal.css';
+import './ErrorModal.css';
 
 class ErrorModal extends VisualObject {
     private errorMessage: string;

@@ -1,6 +1,8 @@
 import Input from "../../ItcHyFeeL/DoneElements/Input.tsx";
 import $ from "jquery";
 
+import "./EmailInput.css"
+
 class EmailInput extends Input {
     constructor() {
         super();

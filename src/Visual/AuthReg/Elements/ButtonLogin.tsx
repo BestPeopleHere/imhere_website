@@ -2,6 +2,8 @@ import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import Controller from "../../../Controller/Controller.tsx";
 import $ from "jquery";
 
+import "./ButtonLogin.css"
+
 class ButtonLogin extends Button {
     constructor() {
         super();

@@ -1,5 +1,6 @@
 import $ from "jquery";
 import Input from "../../ItcHyFeeL/DoneElements/Input.tsx";
+import "./PasswordInput.css"
 
 class PasswordInput extends Input {
     constructor() {
