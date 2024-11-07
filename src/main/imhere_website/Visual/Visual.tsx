@@ -19,7 +19,9 @@ class Visual {
 
     drawPokimon(value: string): void {
         if (this.appVisual instanceof AppVisual) {
+            //lklklk
             console.log('drawPokimon');
+
             this.appVisual.homePage.setPokemonCount(value);
         }
     }
