@@ -29,6 +29,11 @@ class Visual {
         this.appVisual?.authReg.navigate('/home');
         this.appVisual?.authReg.update();
     }
+    toEditProfile()
+    {
+        this.appVisual?.profile.navigate('/profile/edit');
+        this.appVisual?.profile.update();
+    }
 
     toReg()
     {
