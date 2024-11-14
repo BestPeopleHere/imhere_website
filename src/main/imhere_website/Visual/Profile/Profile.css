@@ -1,0 +1,301 @@
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+    overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+    box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+
+.main-container {
+    position: relative;
+    width: 1920px;
+    height: 1370px;
+    margin: 0 auto;
+    font-size: 0px;
+    background: #1f1f1f;
+    overflow: hidden;
+}
+.all-projects {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 1507px 0 0 539px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 54;
+}
+.flex-row {
+    position: absolute;
+    height: 1544.313px;
+    top: -74px;
+    right: -238px;
+    left: -349px;
+    z-index: 74;
+}
+.rectangle {
+    position: absolute;
+    width: 270px;
+    height: 148px;
+    top: 0;
+    left: 50%;
+    background: #2c2c2c;
+    transform: translate(-297.96%, 0);
+    z-index: 59;
+    border-radius: 50px;
+}
+.rectangle-1 {
+    position: absolute;
+    width: 1485px;
+    height: 1466px;
+    top: 0;
+    left: 50%;
+    background: rgba(44, 44, 44, 0.4);
+    transform: translate(-31.62%, 0);
+    z-index: 2;
+    border-radius: 50px;
+}
+.rectangle-2 {
+    position: relative;
+    width: 1384px;
+    height: 148px;
+    margin: 0 0 0 0;
+    background: #2c2c2c;
+    z-index: 64;
+    border-radius: 50px;
+}
+.edit-profile {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 101px;
+    left: 226px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 62;
+}
+.logout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 101px;
+    left: 436px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 63;
+}
+.search {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 101px;
+    left: 104px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 64;
+}
+.about-me {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 64px 0 0 104px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 51;
+}
+.rectangle-3 {
+    position: relative;
+    width: 1319px;
+    height: 241px;
+    margin: 32px 0 0 65px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 52;
+    border-radius: 50px;
+}
+.flex-row-4 {
+    position: relative;
+    width: 184px;
+    height: 24px;
+    margin: 38px 0 0 104px;
+    z-index: 41;
+}
+.tags {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 3;
+}
+.tags-5 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 41;
+}
+.flex-row-b {
+    position: relative;
+    width: 1319px;
+    height: 44px;
+    margin: 28px 0 0 65px;
+    z-index: 50;
+}
+.rectangle-button {
+    position: absolute;
+    width: 155px;
+    height: 41px;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background: #c16bab;
+    border: none;
+    z-index: 46;
+    border-radius: 20px;
+}
+.span-tag1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 8px;
+    left: 39px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 47;
+}
+.rectangle-button-6 {
+    position: absolute;
+    width: 155px;
+    height: 41px;
+    top: 0;
+    left: 188px;
+    cursor: pointer;
+    background: #ffffff;
+    border: 6px solid #f49b35;
+    z-index: 48;
+    border-radius: 20px;
+}
+.span-tag2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 2px;
+    left: 29px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 49;
+}
+.rectangle-button-7 {
+    position: absolute;
+    width: 155px;
+    height: 41px;
+    top: 0;
+    left: 859px;
+    cursor: pointer;
+    background: rgba(244, 155, 53, 0.78);
+    border: none;
+    z-index: 37;
+    border-radius: 20px;
+}
+.span-tag3 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 8px;
+    left: 37px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 38;
+}
+.rectangle-button-8 {
+    position: absolute;
+    width: 192px;
+    height: 41px;
+    top: 0;
+    left: 1047px;
+}

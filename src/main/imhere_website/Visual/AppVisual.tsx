@@ -8,6 +8,8 @@ import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
 import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
+import EditWindow from "./EditWindow/EditWindow";
+
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -26,8 +28,9 @@ class AppVisual extends VisualObject {
 
                 <Routes>
                     <Route path="/authreg" element={<Element instance={this.reg} />} />
-                    <Route path="/" element={<Element instance={this.authReg} />} />
+                    <Route path="/editW" element={<Element instance={this.editW} />} />
                     <Route path="/home" element={<Element instance={this.homePage} />} />
+
                 </Routes>
             </Router>
         );
@@ -65,7 +68,8 @@ class AppVisual extends VisualObject {
     // Все страницы
     public homePage: HomePage;
 
-    public authReg: AuthReg=new AuthReg();
+    public editW: EditWindow=new EditWindow();
+    public authRe: AuthReg=new AuthReg();
     public reg: Reg=new Reg();
 
   //  navigate: NavigateFunction = useNavigate();
