@@ -1,0 +1,9 @@
+.photo-element {                /* фото профиля*/
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    width: 270px;
+    height: 297px;
+    object-fit: cover; /* Обрезка фото по рамке */
+    border-radius: 50px;
+}

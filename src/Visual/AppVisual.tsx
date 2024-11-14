@@ -8,6 +8,8 @@ import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
 import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
+import Profile from "./Profile/Profile.tsx";
+import EditPage from "./Profile/EditPage/EditPage.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -28,6 +30,8 @@ class AppVisual extends VisualObject {
                     <Route path="/authreg" element={<Element instance={this.reg} />} />
                     <Route path="/" element={<Element instance={this.authReg} />} />
                     <Route path="/home" element={<Element instance={this.homePage} />} />
+                    <Route path="/profile" element={<Element instance={this.profile} />} />
+                    <Route path="/profile/edit" element={<Element instance={this.editPage} />} />
                 </Routes>
             </Router>
         );
@@ -67,6 +71,8 @@ class AppVisual extends VisualObject {
 
     public authReg: AuthReg=new AuthReg();
     public reg: Reg=new Reg();
+    public profile: Profile=new Profile();
+    public editPage: EditPage=new EditPage();
 
   //  navigate: NavigateFunction = useNavigate();
 }
