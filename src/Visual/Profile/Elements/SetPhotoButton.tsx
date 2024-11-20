@@ -1,37 +1,66 @@
+
+import  { ChangeEvent } from "react";
 import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import "./SetPhotoButton.css"
 import downloadIcon from "../../../assets/images/download.png";
+import setAvatarController from "../../../Controller/SetAvatarController.tsx";
+import SetAvatarController from "../../../Controller/SetAvatarController.tsx";
 
 class SetPhotoButton extends Button {
     constructor() {
         super();
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
 
     render() {
         return (
-            <button id={this.id} className="download-photo-button">
+            // <button id={this.id} className="download-photo-button">
+            //     <img src={downloadIcon} alt="Download"/>
+            // </button>
+
+
+        <div className="set-photo-button-container">
+            {/* Кнопка для загрузки */}
+            <button
+                id={this.id}
+                className="download-photo-button"
+                onClick={this.handleButtonClick}
+            >
                 <img src={downloadIcon} alt="Download"/>
             </button>
-        );
+
+            {/* Скрытый input для выбора файла */}
+            <input
+                type="file"
+                id={`file-input`}
+                style={{display: "none"}}
+                onChange={this.handleFileChange}
+            />
+        </div>
+
+    )
+        ;
     }
 
-    // public setActionController(controller: Controller)
-    // {
-    //     this.controller = controller;
-    //
-    //     $(`#${this.id}`).off().on('click', () => {
-    //         controller.performe();
-    //     });
-    // }
+    handleButtonClick() {
+        const fileInput = document.getElementById(`file-input`) as HTMLInputElement;
+        if (fileInput) {
+            fileInput.click(); // Открыть диалог выбора файла
+        }
+        const setAvatarController:SetAvatarController=new SetAvatarController();
+        setAvatarController.performe();
+    }
 
-    // public setText(text: string)
-    // {
-    //     this.text = text;
-    //     this.forceUpdate();
-    // }
+    handleFileChange(event: ChangeEvent<HTMLInputElement>) {
+        const selectedFile = event.target.files?.[0] || null;
+        if (selectedFile) {
+            this.file = selectedFile;
+            console.log("File uploaded:", this.file);
+        }
+    }
 
-    // text: string="Жмопка";
-    // controller: Controller|null = null;
+    file: File | null = null;
+
 }
 
 export default SetPhotoButton;

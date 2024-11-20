@@ -162,3 +162,78 @@
     font-size: 20px;
     font-family: Inter, var(--default-font-family);
 }
+
+
+.text-nickname{
+    position: absolute;
+    top: 505px;
+    left: 150px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Inter, var(--default-font-family);
+}
+
+.text-status{
+    position: absolute;
+    top: 555px;
+    left: 150px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Inter, var(--default-font-family);
+}
+
+.text-description{
+    position: absolute;
+    top: 350px;
+    left: 600px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Inter, var(--default-font-family);
+}
+
+.text-birthday{
+    position: absolute;
+    top: 605px;
+    left: 150px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Inter, var(--default-font-family);
+}
+
+.text-sex{
+    position: absolute;
+    top: 655px;
+    left: 150px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Inter, var(--default-font-family);
+}
+
+
+
+
+/* Затемнение фона */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный черный цвет */
+    z-index: 999; /* выше всех элементов */
+}
+
+/* Контейнер для EditWindow */
+.edit-window-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px; /* Устанавливаем фиксированную высоту */
+    overflow: auto; /* Включаем прокрутку */
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    background: #595959;
+    border-radius: 30px;
+}

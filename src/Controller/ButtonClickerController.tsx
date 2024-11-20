@@ -11,6 +11,7 @@ class ButtonClickerController extends Controller {
         console.log("performe ButtonClickerController");
 
         await Data.bc.addPokimon();
+        await Data.bc.getAllUsersPokimon();
 
         const pokimon: string|null = await Data.bc.getPokimon();
         console.log("pokimon: ", pokimon);

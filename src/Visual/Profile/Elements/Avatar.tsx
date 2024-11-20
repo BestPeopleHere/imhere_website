@@ -8,7 +8,7 @@ class Avatar extends VisualObject {
 
     render() {
         return (
-                <img src={this.avatarUrl}
+                <img src={`https://imhere.space:5656${this.avatarUrl}`}
                       className="photo-element"
                 />
         );
@@ -25,7 +25,7 @@ class Avatar extends VisualObject {
         this.forceUpdate();
     }
 
-    avatarUrl: string="/rik.png";
+    avatarUrl: string|undefined="/rik.png";
 
 }
 
