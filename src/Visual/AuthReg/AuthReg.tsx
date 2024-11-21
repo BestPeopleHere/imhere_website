@@ -27,7 +27,7 @@ class AuthReg extends VisualObject {
 
     render() {
         return (
-            <div className='main-container'>
+            <div className='main-container-3'>
                 <span className='text'>ImHere</span>
 
                 <div className='pic'>
@@ -37,8 +37,8 @@ class AuthReg extends VisualObject {
                 <button className='Button-2'/>
                 <div className='img-3'/>
 
-                <Element instance={this.emailInput} className='Button'/>
-                <Element instance={this.passwordInput} className='rectangle'/>
+                <Element instance={this.emailInput} className='Button-3'/>
+                <Element instance={this.passwordInput} className='rectangle-3'/>
 
                 <Element instance={this.logButton} className='log-in'/>
                 <Element instance={this.createButton} className='create-account'/>
