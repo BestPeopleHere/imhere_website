@@ -34,7 +34,9 @@ class VisualObject {
     {
         if (this.instanceRenderer?.navigate!=undefined) {
             this.instanceRenderer?.navigate(path);
+            this.instanceRenderer?.navigate(0);
         }
+
     }
 
     update()
