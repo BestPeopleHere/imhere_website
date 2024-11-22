@@ -11,9 +11,9 @@ class EmailInput extends Input {
     render() {
         return (
             <div className={this.className}>
-                <div className="example-container">
+                <div className="example-container-1">
                     <input
-                        className="example-input"
+                        className="example-input-1"
                         id={this.id}
                         placeholder={this.placeholder}
                     />

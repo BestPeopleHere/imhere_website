@@ -1,10 +1,10 @@
-.example-container {
+.example-container-1 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.example-input {
+.example-input-1 {
     width: 400px;
     height: 70px;
     border-radius: 50px;
@@ -18,12 +18,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавляем плавный переход */
 }
 
-.example-input::placeholder {
+.example-input-1::placeholder {
     color: #D14C7B;
     opacity: 0.8;
 }
 
-.example-input:focus {
+.example-input-1:focus {
     transform: scale(1.05); /* Увеличение поля */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Мягкая тень */
 }

@@ -5,6 +5,21 @@
     "Source Han Sans CN", sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.fullscreen-div {
+    overflow: auto;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
 .main-container {
     overflow: hidden;
 }
@@ -32,11 +47,11 @@ button {
     }
 }
 
-.main-container {
-    position: relative;
-    width: 1920px;
-    height: 1080px;
-    margin: 0 auto;
+.main-container-3 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
     background:
             radial-gradient(circle at 20% 0%, rgba(165, 88, 215, 0.7), transparent 40%),
             radial-gradient(circle at 100% 100%, rgba(209, 76, 123, 0.7), transparent 50%),
@@ -66,7 +81,7 @@ button {
     z-index: 1;
 }
 
-.Button {
+.Button-3 {
     position: absolute;
     top: 456px;
     left: 50%;
@@ -127,7 +142,7 @@ button {
 /*    border-radius: 50%;*/
 /*}*/
 
-.rectangle {
+.rectangle-3 {
     position: absolute;
     top: 542px;
     left: 50%;
