@@ -8,8 +8,9 @@ class TagWindow extends VisualObject {
         super();
         this.saveButton = new Button();
 
-        // Привязываем метод к текущему контексту
         this.handleTagSelection = this.handleTagSelection.bind(this);
+        this.toggleCategory = this.toggleCategory.bind(this);
+        this.readyToBeRendered = this.readyToBeRendered.bind(this);
 
         this.state = {
             tags: {
@@ -25,49 +26,62 @@ class TagWindow extends VisualObject {
                 "Хобби": [],
                 "Отношение к курению": [],
                 "Отношение к алкоголю": [],
+            },
+            expandedCategories: {
+                "Жанры фильмов": false,
+                "Жанры игр": false,
+                "Хобби": false,
+                "Отношение к курению": false,
+                "Отношение к алкоголю": false,
             }
         };
     }
 
-    // Обработчик выбора тега
-    handleTagSelection(category: string, tag: string) {
-        console.log("Обработка выбора тега");
+    toggleCategory(category: string) {
+        const { expandedCategories } = this.state;
+        this.state.expandedCategories = {
+            ...expandedCategories,
+            [category]: !expandedCategories[category],
+        };
+        this.forceUpdate();
+    }
 
-        // Получение текущего состояния
+    handleTagSelection(category: string, tag: string) {
         const { selectedTags, tags } = this.state;
 
-        // Проверка, выбран ли тег
         const isSelected = selectedTags[category]?.includes(tag);
 
-        // Обновление выбранных тегов
         const updatedSelectedTags = isSelected
             ? selectedTags[category].filter((t: string) => t !== tag)
             : [...(selectedTags[category] || []), tag];
 
-        // Обновление доступных тегов
         const updatedTags = isSelected
             ? [...(tags[category] || []), tag]
             : (tags[category] || []).filter((t: string) => t !== tag);
 
-        // Обновление состояния вручную
-        this.state = {
-            ...this.state,
-            selectedTags: {
-                ...selectedTags,
-                [category]: updatedSelectedTags,
-            },
-            tags: {
-                ...tags,
-                [category]: updatedTags,
-            },
+        this.state.selectedTags = {
+            ...selectedTags,
+            [category]: updatedSelectedTags,
         };
 
-        // Обновление интерфейса
+        this.state.tags = {
+            ...tags,
+            [category]: updatedTags,
+        };
+
         this.forceUpdate();
     }
 
+    readyToBeRendered() {
+        this.saveButton.setText('Сохранить');
+        this.saveButton.setActionController(() => {
+            console.log("Теги сохранены!", this.state.selectedTags);
+            this.hideTagWindow();
+        });
+    }
+
     render() {
-        const { selectedTags, tags } = this.state;
+        const { selectedTags, tags, expandedCategories } = this.state;
 
         return (
             <div className={styles['main-container']}>
@@ -78,9 +92,17 @@ class TagWindow extends VisualObject {
                     <div className={styles['category-container']}>
                         {Object.keys(tags).map(category => (
                             <div key={category} className={styles['category-section']}>
-                                <span className={styles['category-title']}>{category}</span>
+                                <div className={styles['category-header']}>
+                                    <span className={styles['category-title']}>{category}</span>
+                                    <button
+                                        className={`${styles['toggle-button']} ${
+                                            expandedCategories[category] ? styles.expanded : ''
+                                        }`}
+                                        onClick={() => this.toggleCategory(category)}
+                                    />
+                                </div>
 
-                                {/* Рендеринг выбранных тегов */}
+                                {/* Всегда отображаем выбранные теги */}
                                 <div className={styles['selected-tags-container']}>
                                     {selectedTags[category]?.map(tag => (
                                         <button
@@ -93,18 +115,20 @@ class TagWindow extends VisualObject {
                                     ))}
                                 </div>
 
-                                {/* Рендеринг доступных тегов */}
-                                <div className={styles['tag-options-container']}>
-                                    {tags[category]?.map(tag => (
-                                        <button
-                                            key={`available-${tag}`}
-                                            className={`${styles['tag-option']} ${selectedTags[category]?.includes(tag) ? styles.active : ''}`}
-                                            onClick={() => this.handleTagSelection(category, tag)}
-                                        >
-                                            {tag}
-                                        </button>
-                                    ))}
-                                </div>
+                                {/* Отображаем доступные теги только если категория раскрыта */}
+                                {expandedCategories[category] && (
+                                    <div className={styles['tag-options-container']}>
+                                        {tags[category]?.filter(tag => !selectedTags[category]?.includes(tag)).map(tag => (
+                                            <button
+                                                key={`available-${tag}`}
+                                                className={`${styles['tag-option']} ${selectedTags[category]?.includes(tag) ? styles.active : ''}`}
+                                                onClick={() => this.handleTagSelection(category, tag)}
+                                            >
+                                                {tag}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -116,19 +140,6 @@ class TagWindow extends VisualObject {
                 />
             </div>
         );
-    }
-
-
-
-    readyToBeRendered() {
-        this.saveButton.setText('Сохранить');
-        this.saveButton.setActionController(() => {
-            console.log("Теги сохранены!", this.state.selectedTags);
-            this.hideTagWindow();
-
-            // Обновление интерфейса после сохранения
-            this.forceUpdate();
-        });
     }
 
     saveButton: Button;

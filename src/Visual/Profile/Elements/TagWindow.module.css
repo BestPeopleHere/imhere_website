@@ -144,30 +144,46 @@
     background-color: transparent; /* Если был фон */
     border: none; /* Если был бордер */
 }
+
 .category-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .toggle-button {
-    background: transparent;
+    position: relative;
+    width: 20px; /* Размер кнопки */
+    height: 20px;
     border: none;
-    font-size: 22px; /* Стиль стрелочки */
+    background: none;
     cursor: pointer;
-    color: #fff;
-    transition: transform 0.3s;
-    font-weight: bold;
-}
-
-.toggle-button:hover {
-    color: #d14c7b;
-}
-
-.toggle-button:focus {
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out; /* Анимация вращения */
 }
+
+.toggle-button::before {
+    content: '';
+    display: block;
+    width: 10px; /* Длина стрелки */
+    height: 10px;
+    border-right: 4px solid #fff; /* Сделано правое крыло длиннее */
+    border-left: 0px solid #fff;
+    border-top: 4px solid #fff;
+    transform: rotate(135deg); /* Положение стрелки вверх */
+    transition: transform 0.3s ease-in-out;
+}
+
+.toggle-button.expanded::before {
+    transform: rotate(-45deg); /* Положение стрелки вниз */
+}
+
 
 .tag-options-container {
     display: flex;
