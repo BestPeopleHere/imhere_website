@@ -10,6 +10,8 @@ import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
 import Profile from "./Profile/Profile.tsx";
 import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
+import Example from "./Example/Example.tsx";
+import ToSauna from "../Controller/ToSauna.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -29,6 +31,7 @@ class AppVisual extends VisualObject {
                 <Routes>
                     <Route path="/authreg" element={<Element instance={this.reg} />} />
                     <Route path="/" element={<Element instance={this.authReg} />} />
+                    <Route path="/sauna" element={<Element instance={this.sauna} />} />
                     <Route path="/home" element={<Element instance={this.homePage} />} />
                     <Route path="/profile" element={<Element instance={this.profile} />} />
                     <Route path="/profile/edit" element={<Element instance={this.editWindow} />} />
@@ -42,11 +45,21 @@ class AppVisual extends VisualObject {
             this.controllerUpdate.performe();
         }
 
-        this.button.setActionController(new ButtonClickerController());
+        //this.button.setActionController(new ButtonClickerController());
+        this.button.setActionController(new ToSauna());
         this.button.setText("test to connect with backend");
+
+        this.handlePopState = this.handlePopState.bind(this);
+
+        window.removeEventListener("popstate", this.handlePopState);
+        window.addEventListener("popstate", this.handlePopState);
 
         console.log('update');
     }
+
+    handlePopState = () => {
+        window.location.reload();
+    };
 
     componentWillUnmount() {
         console.log('disable');
@@ -68,7 +81,7 @@ class AppVisual extends VisualObject {
 
     // Все страницы
     public homePage: HomePage;
-
+    public sauna: Example=new Example();
     public authReg: AuthReg=new AuthReg();
     public reg: Reg=new Reg();
     public profile: Profile=new Profile();
