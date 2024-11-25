@@ -8,7 +8,7 @@ class GetInfProfileUser extends Controller {
 
         const data = await Data.bc.getUserProfile();
 
-        Data.visual.appVisual?.profile.updateInf(data?.nickname,data?.status,data?.description,data?.birthday,data?.sex,data?.link_to_avatar);
+        Data.visual.appVisual?.profile.updateInf(data);
     }
 }
 

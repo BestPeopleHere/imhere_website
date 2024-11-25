@@ -3,7 +3,6 @@ import  { ChangeEvent } from "react";
 import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import "./SetPhotoButton.css"
 import downloadIcon from "../../../assets/images/download.png";
-import setAvatarController from "../../../Controller/SetAvatarController.tsx";
 import SetAvatarController from "../../../Controller/SetAvatarController.tsx";
 
 class SetPhotoButton extends Button {

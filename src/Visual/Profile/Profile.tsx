@@ -11,6 +11,7 @@ import Avatar from "./Elements/Avatar.tsx";
 import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
 import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
+import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
 
 
 
@@ -50,7 +51,7 @@ class Profile extends VisualObject {
                 )}
                 {this.isTagWindowVisible && (
                     <Element
-                        instance={new TagWindow()}
+                        instance={this.editTags}
                         className="tag-window-container"
                     />
                 )}
@@ -99,11 +100,11 @@ class Profile extends VisualObject {
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
 
-                <div className="text-nickname">{this.nickname}</div>
-                <div className="text-status">{this.status}</div>
-                <div className="text-description">{this.description}</div>
-                <div className="text-birthday">{this.birthday}</div>
-                <div className="text-sex">{this.sex}</div>
+                <div className="text-nickname">{this.userProfile?.nickname}</div>
+                <div className="text-status">{this.userProfile?.status}</div>
+                <div className="text-description">{this.userProfile?.description}</div>
+                <div className="text-birthday">{this.userProfile?.birthday}</div>
+                <div className="text-sex">{this.userProfile?.sex}</div>
 
                 <div className="text-portfolio">Портфолио</div>
 
@@ -114,16 +115,19 @@ class Profile extends VisualObject {
         );
     }
 
-    updateInf(nickname: string | undefined, status: string | undefined, description: string | undefined, birthday: string | undefined, sex: string | undefined, link_to_avatar: string | undefined) {
-        this.nickname = nickname;
-        this.status = status;
-        this.description = description;
-        this.birthday = birthday;
-        this.sex=sex;
-        this.link_to_avatar = link_to_avatar;
+    updateInf(userProfile: UserProfileDTO|null) {
 
-        this.avatar.avatarUrl=link_to_avatar;
-        console.log("link: ",link_to_avatar);
+        this.userProfile=userProfile;
+        //
+        // this.nickname = nickname;
+        // this.status = status;
+        // this.description = description;
+        // this.birthday = birthday;
+        // this.sex=sex;
+        // this.link_to_avatar = link_to_avatar;
+        //
+        // this.avatar.avatarUrl=link_to_avatar;
+        // console.log("link: ",link_to_avatar);
 
         this.forceUpdate();
     }
@@ -161,13 +165,9 @@ class Profile extends VisualObject {
     getInfProgileController:GetInfProfileUser = new GetInfProfileUser();
 
     editWindow: EditWindow=new EditWindow();
+    editTags: TagWindow=new TagWindow();
 
-    nickname: string|undefined="none";
-    status: string|undefined="none";
-    description: string|undefined="none";
-    birthday: string|undefined="none";
-    sex: string|undefined="none";
-    link_to_avatar: string|undefined="none";
+    userProfile: UserProfileDTO|null=null;
 }
 
 export default Profile;
