@@ -43,6 +43,11 @@ class Visual {
         this.appVisual?.reg.navigate('/');
     }
 
+    toProfile()
+    {
+        this.appVisual?.reg.navigate('/profile/id'); // ???????вадим помогииииииии
+    }
+
     public appVisual: AppVisual | undefined;
 }
 

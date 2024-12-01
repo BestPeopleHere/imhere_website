@@ -6,7 +6,7 @@ import Button from "../ItcHyFeeL/DoneElements/Button.tsx";
 import Element from "../ItcHyFeeL/Element.tsx";
 import EmailInPut from "./Elements/EmailInPut.tsx";
 import NicknameInput from "./Elements/NicknameInput.tsx";
-//import BirthDayInput from "./Elements/BirthDayInput.tsx";
+//import BirthDayInput from "./UserCard/BirthDayInput.tsx";
 import GenderSelector from "./Elements/MaleOrFemale.tsx";
 
 class Main extends VisualObject {

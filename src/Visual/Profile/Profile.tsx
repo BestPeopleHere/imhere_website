@@ -4,7 +4,6 @@ import EditButton from "./Elements/EditButton"
 import Button from "../ItcHyFeeL/DoneElements/Button";
 import './Profile.css';
 import SetPhotoButton from "./Elements/SetPhotoButton.tsx";
-import SetAvatarController from "../../Controller/SetAvatarController.tsx";
 import Avatar from "./Elements/Avatar.tsx";
 import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
@@ -79,10 +78,10 @@ class Profile extends VisualObject {
         this.status = status;
         this.description = description;
         this.birthday = birthday;
-        this.sex=sex;
+        this.sex = sex;
         this.link_to_avatar = link_to_avatar;
 
-        this.avatar.avatarUrl=link_to_avatar;
+        this.avatar.avatarUrl = link_to_avatar;
         console.log("link: ",link_to_avatar);
 
         this.forceUpdate();

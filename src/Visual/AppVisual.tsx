@@ -10,12 +10,12 @@ import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
 import Profile from "./Profile/Profile.tsx";
 import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
+import Search from "./Search/Search.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
         super();
         this.homePage = new HomePage();
-
 
     }
 
@@ -29,9 +29,11 @@ class AppVisual extends VisualObject {
                 <Routes>
                     <Route path="/authreg" element={<Element instance={this.reg} />} />
                     <Route path="/" element={<Element instance={this.authReg} />} />
+                    <Route path="/sauna" element={<Element instance={this.sauna} />} />
                     <Route path="/home" element={<Element instance={this.homePage} />} />
                     <Route path="/profile" element={<Element instance={this.profile} />} />
                     <Route path="/profile/edit" element={<Element instance={this.editWindow} />} />
+                    <Route path="/search" element={<Element instance={this.search} />} />
                 </Routes>
             </Router>
         );
@@ -73,6 +75,7 @@ class AppVisual extends VisualObject {
     public reg: Reg=new Reg();
     public profile: Profile=new Profile();
     public editWindow: EditWindow=new EditWindow();
+    public search: Search = new Search();
 
   //  navigate: NavigateFunction = useNavigate();
 }

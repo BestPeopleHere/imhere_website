@@ -47,6 +47,13 @@ button {
     overflow: hidden;
 }
 
+.login-container {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Distribute space evenly between items */
+    align-items: center; /* Vertically center items */
+    width: 300px; /* Adjust width as needed */
+}
+
 
 .text {
     display: flex;
@@ -66,7 +73,7 @@ button {
     z-index: 1;
 }
 
-.Button {
+.email-input-space {
     position: absolute;
     top: 456px;
     left: 50%;
@@ -127,7 +134,7 @@ button {
 /*    border-radius: 50%;*/
 /*}*/
 
-.rectangle {
+.password-input-space {
     position: absolute;
     top: 542px;
     left: 50%;

@@ -18,6 +18,7 @@
     height: 1466px;
     background: rgba(44, 44, 44, 0.4);
 }
+
 .about-field {         /* поле О */
     position: absolute;
     top: 200px;
@@ -26,9 +27,10 @@
     height: 241px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #000000;
+
     border-radius: 50px;
 }
+
 .top-menu{        /* верхнее меню */
     top: -74px;
     left: 468px;
@@ -39,6 +41,7 @@
     background: #2c2c2c;
     border-radius: 50px;
 }
+
 .logo{              /* плашка над фото */
     position: absolute;
     top: -74px;
@@ -49,6 +52,7 @@
     background: #2c2c2c;
     border-radius: 50px;
 }
+
 .text-logo{          /* стиль для текста для плашки над фото */
     font-size: 30px;
     top: 90px;
@@ -85,6 +89,7 @@
     cursor: pointer;
     font-family: Inter, var(--default-font-family);
 }
+
 .top-edit-button:hover {
     text-decoration: underline;
 }
@@ -100,6 +105,7 @@
     cursor: pointer;
     font-family: Inter, var(--default-font-family);
 }
+
 .top-exit-button:hover {
     text-decoration: underline;
 }
@@ -116,6 +122,7 @@
 /*    !*background: url(../../assets/images/download.png) no-repeat center, #2c2c2c;*!*/
 /*    !*border-radius: 20px;*!*/
 /*}*/
+
 .add-tag-button{                     /* кнопка добавить тэг*/
     position: absolute;
     top: 540px;
@@ -127,6 +134,7 @@
     border: none;
     cursor: pointer;
 }
+
 .add-project-button{                /* кнопка добавить проект*/
     position: absolute;
     top: 700px;
@@ -138,22 +146,25 @@
     border: none;
     cursor: pointer;
 }
+
 .text-tag{
     position: absolute;
     top: 480px;
-    left: 580px;
+    left: 550px;
     color: #ffffff;
     font-size: 20px;
     font-family: Inter, var(--default-font-family);
 }
+
 .text-about{
     position: absolute;
     top: 150px;
-    left: 600px;
+    left: 550px;
     color: #ffffff;
     font-size: 20px;
     font-family: Inter, var(--default-font-family);
 }
+
 .text-portfolio{
     position: absolute;
     top: 705px;
@@ -208,9 +219,6 @@
     font-size: 20px;
     font-family: Inter, var(--default-font-family);
 }
-
-
-
 
 /* Затемнение фона */
 .overlay {

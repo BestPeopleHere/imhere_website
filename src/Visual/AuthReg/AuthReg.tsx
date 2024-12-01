@@ -37,10 +37,11 @@ class AuthReg extends VisualObject {
                 <button className='Button-2'/>
                 <div className='img-3'/>
 
-                <Element instance={this.emailInput} className='Button'/>
-                <Element instance={this.passwordInput} className='rectangle'/>
-
+                <Element instance={this.emailInput} className='email-input-space'/>
+                <Element instance={this.passwordInput} className='password-input-space'/>
+                <div className="login-container">
                 <Element instance={this.logButton} className='log-in'/>
+                </div>
                 <Element instance={this.createButton} className='create-account'/>
 
                 <Element instance={this.button}/>

@@ -29,7 +29,7 @@ class EditWindow extends VisualObject {
 
     render() {
         return (
-            <div className={styles['main-container']}>
+            <div className={styles['main-container-edit-window']}>
 
                 <Element instance={this.exit} className={styles.exit}/>
 

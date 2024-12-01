@@ -5,7 +5,7 @@
     "Source Han Sans CN", sans-serif;
 }
 
-.main-container {
+.main-container-edit-window {
     overflow: hidden;
     position: relative;
     width: 800px; /* Уменьшена ширина */
@@ -14,8 +14,8 @@
     border-radius: 50px; /* Пропорционально уменьшен радиус */
 }
 
-.main-container,
-.main-container * {
+.main-container-edit-window,
+.main-container-edit-window * {
     box-sizing: border-box;
 }
 
