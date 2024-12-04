@@ -5,9 +5,12 @@ class SetAvatarController extends Controller{
     async performe(): Promise<void> {
         console.log("Performed SetAvatarController");
 
-        Data.bc.editUserAvatar(Data.visual.appVisual?.profile.buttonSetPhoto.file);
+
+
+        await Data.bc.editUserAvatar(Data.visual.appVisual?.profile.buttonSetPhoto.file);
 
         Data.visual.appVisual?.profile.forceUpdate();
+        Data.visual.appVisual?.profile.update();
     }
 }
 

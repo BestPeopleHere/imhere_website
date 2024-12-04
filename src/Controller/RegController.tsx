@@ -24,6 +24,7 @@ class RegController extends Controller {
             }
             else
             {
+                await Data.bc.createUserProfile();
                 Data.visual.toMain();
             }
 

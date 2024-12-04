@@ -90,7 +90,7 @@ class Profile extends VisualObject {
 
     readyToBeRendered() {
         this.editButton.setActionController(new ShowEditProfileController());
-       // this.buttonSetPhoto.setActionController(new SetAvatarController());
+        this.buttonSetPhoto.setActionController(new SetAvatarController());
 
         this.getInfProgileController.performe();
     }
