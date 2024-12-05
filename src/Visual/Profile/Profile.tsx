@@ -9,6 +9,8 @@ import Avatar from "./Elements/Avatar.tsx";
 import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
 import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
+import SearchButton from "./Elements/SearchButton.tsx";
+import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
 
 
 
@@ -16,6 +18,7 @@ class Profile extends VisualObject {
     constructor() {
         super();
         this.editButton = new EditButton();
+        this.searchButton = new SearchButton();
 
     }
 
@@ -48,7 +51,8 @@ class Profile extends VisualObject {
                 <div className='main-contain'></div>
                 <div className='about-field'></div>
                 <div className='top-menu'></div>
-                <button className="top-search-button">Поиск</button>
+                <Element instance={this.searchButton} className="top-search-button" />
+
                 <Element instance={this.editButton} className="top-edit-button"/>
 
                 <button className="top-exit-button">Выйти</button>
@@ -91,11 +95,13 @@ class Profile extends VisualObject {
     readyToBeRendered() {
         this.editButton.setActionController(new ShowEditProfileController());
        // this.buttonSetPhoto.setActionController(new SetAvatarController());
+        this.searchButton.setActionController(new ToSearchButtonController());
 
         this.getInfProgileController.performe();
     }
 
     editButton: EditButton;
+    searchButton: SearchButton;
     button: Button = new Button();
     buttonSetPhoto: SetPhotoButton = new SetPhotoButton();
     avatar: Avatar = new Avatar();
@@ -103,6 +109,7 @@ class Profile extends VisualObject {
     getInfProgileController:GetInfProfileUser = new GetInfProfileUser();
 
     editWindow: EditWindow=new EditWindow();
+
 
     nickname: string|undefined="none";
     status: string|undefined="none";

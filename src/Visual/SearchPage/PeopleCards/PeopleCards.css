@@ -1,0 +1,40 @@
+.card-background{
+    position: absolute;
+    top: 800px;
+    left: 300px;
+    width: 643px;
+    height: 277px;
+    margin: 0 auto;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 60px;
+}
+
+.card-nickname{
+    position: absolute;
+    top: 55px;
+    left: 240px;
+    font-family: Inter, var(--default-font-family);
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.card-avatar{
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 100px;
+}
+
+.card-status{
+    position: absolute;
+    top: 100px;
+    left: 240px;
+    font-family: Inter, var(--default-font-family);
+    color: #ffffff;
+    font-size: 20px;
+}
+
