@@ -1,4 +1,5 @@
-import MainController from "./src/main/imhere_website/Controller/MainController";
+import MainController from "./src/Controller/MainController";
+
 
 const mainController = new MainController();
 
