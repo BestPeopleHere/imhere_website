@@ -7,8 +7,6 @@ import Input from "../../ItcHyFeeL/DoneElements/Input";
 import About from "./Elements/About";
 import NameInput from "./Elements/NameInput";
 import NicknameInput from "./Elements/NicknameInput";
-import BirthdayInput from "./Elements/BirthdayInput";
-import GenderInput from "./Elements/GenderInput";
 import SaveButton from "./Elements/SaveButton";
 import ExitButton from "./Elements/ExitButton";
 import EditProfileController from "../../../Controller/EditProfileController.tsx";

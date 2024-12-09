@@ -17,7 +17,6 @@ import ToSearchButtonController from "../../Controller/ToSearchButtonController.
 
 import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
 import AddTagButton from "./Elements/AddTagButton.tsx";
-import addTagButton from "./Elements/AddTagButton.tsx";
 import GetUsersTagsForEditController from "../../Controller/GetUsersTagsForEditController.tsx";
 import TagDTO from "../../Controller/DTO/TagDTO.tsx";
 import GetTagsController from "../../Controller/GetTagsController.tsx";
@@ -68,7 +67,7 @@ class Profile extends VisualObject {
                 )}
 
                 <div className="tags-container">
-                    {this.tags.map((tag: TagDTO) => (
+                    {this.tags?.map((tag: TagDTO) => (
                         <Element
                             key={tag.id}
                             instance={new Tag(tag.tag_name)}

@@ -4,7 +4,6 @@ import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import "./SetPhotoButton.css"
 import downloadIcon from "../../../assets/images/download.png";
 
-import SetAvatarController from "../../../Controller/SetAvatarController.tsx";
 
 class SetPhotoButton extends Button {
     constructor() {

@@ -5,7 +5,6 @@ import Controller from "../Controller/Controller.tsx";
 import VisualObject from "./ItcHyFeeL/VisualObject.tsx";
 import Element from "./ItcHyFeeL/Element.tsx";
 import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
-import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
 import Profile from "./Profile/Profile.tsx";
