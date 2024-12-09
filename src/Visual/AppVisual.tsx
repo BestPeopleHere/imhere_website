@@ -9,6 +9,7 @@ import ButtonClickerController from "../Controller/ButtonClickerController.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
 import Reg from "./Reg/Reg.tsx";
 import Profile from "./Profile/Profile.tsx";
+import SearchPage from "./SearchPage/SearchPage.tsx";
 import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
 import Example from "./Example/Example.tsx";
 import ToSauna from "../Controller/ToSauna.tsx";
@@ -35,6 +36,8 @@ class AppVisual extends VisualObject {
                     <Route path="/home" element={<Element instance={this.homePage} />} />
                     <Route path="/profile" element={<Element instance={this.profile} />} />
                     <Route path="/profile/edit" element={<Element instance={this.editWindow} />} />
+                    <Route path="/search" element={<Element instance={this.search} />} />
+
                 </Routes>
             </Router>
         );
@@ -86,8 +89,10 @@ class AppVisual extends VisualObject {
     public reg: Reg=new Reg();
     public profile: Profile=new Profile();
     public editWindow: EditWindow=new EditWindow();
+    public search: SearchPage=new SearchPage();
 
-  //  navigate: NavigateFunction = useNavigate();
+
+    //  navigate: NavigateFunction = useNavigate();
 }
 
 export default AppVisual;

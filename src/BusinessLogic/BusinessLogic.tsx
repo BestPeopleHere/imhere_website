@@ -1,14 +1,27 @@
 import { jwtDecode } from 'jwt-decode';
+import TagDTO from "../Controller/DTO/TagDTO.tsx";
+import UserProfileDTO from "../Controller/DTO/UserProfileDTO.tsx";
 
 
-interface UserProfile {
-    nickname: string;
-    status: string;
-    description: string;
-    birthday: string;
-    sex: string;
-    link_to_avatar: string;
-}
+// interface UserProfile {
+//     nickname: string;
+//     status: string;
+//     description: string;
+//     birthday: string;
+//     sex: string;
+//     link_to_avatar: string;
+// }
+
+// interface TagCategory {
+//     id: number;
+//     category_name: string;
+// }
+//
+// interface Tag {
+//     tag_id: number;
+//     tag_name: string;
+//     tag_category: TagCategory;
+// }
 
 class BusinessLogic {
     constructor() {}
@@ -178,8 +191,12 @@ class BusinessLogic {
     }
 
 
+    async getUserProfile(): Promise<UserProfileDTO | null> {
 
-    async getUserProfile(): Promise<UserProfile | null> {
+
+
+  //  async getUserProfile(): Promise<UserProfile | null> {
+
         try {
             //const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('token')}`, {
             const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('id')}`, {
@@ -198,11 +215,37 @@ class BusinessLogic {
                 return null;
             }
 
-            const data: UserProfile = await response.json();
+            const data: UserProfileDTO = await response.json();
             console.log(data);
             return data;
         } catch (error) {
             console.error('Error:', error);
+            return null;
+        }
+    }
+
+    async getTags(): Promise<TagDTO[] | null> {
+        try {
+            const response = await fetch('https://imhere.space:5656/api/tags', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                    'Accept': 'application/json'
+                }
+            });
+
+            console.log("token: ", sessionStorage.getItem('token'));
+
+            if (!response.ok) {
+                console.error('Failed to fetch tags:', response.statusText);
+                return null;
+            }
+
+            const data: TagDTO[] = await response.json();
+            console.log("Tags received:", data);
+            return data;
+        } catch (error) {
+            console.error('Error fetching tags:', error);
             return null;
         }
     }

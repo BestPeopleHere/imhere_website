@@ -127,6 +127,88 @@
     border: none;
     cursor: pointer;
 }
+.tags-container {
+    position: absolute;
+    top: 540px;
+    left: 600px;
+    display: flex;
+    gap: 10px;
+    overflow: auto; /* Прокрутка, если контент слишком большой */
+}
+
+.tag-window-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 55px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow: auto; /* Включаем прокрутку */
+}
+
+/* Скрываем полосы прокрутки */
+.tag-window-container::-webkit-scrollbar {
+    display: none; /* Прячем горизонтальную и вертикальную полосы */
+}
+
+/* Стили для содержимого внутри окна */
+.form-container {
+    max-height: 100%; /* Устанавливаем максимальную высоту */
+    overflow-y: auto; /* Включаем вертикальную прокрутку */
+    padding-right: 15px; /* Чтобы избежать обрезки контента */
+}
+
+.form-container::-webkit-scrollbar {
+    display: none; /* Прячем полосы прокрутки внутри формы */
+}
+
+
+
+/*.add-tag-button {*/
+/*    font-size: 20px; !* Размер текста кнопки *!*/
+/*    width: 30px; !* Размер кнопки *!*/
+/*    height: 30px;*/
+/*    display: flex; !* Центрируем текст *!*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin-left: 10px; !* Расстояние между тегами и кнопкой *!*/
+/*    background-color: var(--button-bg, #fff);*/
+/*    color: var(--button-color, #000);*/
+/*    border: 1px solid var(--button-border, #ccc);*/
+/*    border-radius: 50%;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.2s ease;*/
+/*}*/
+
+.add-tag-button:hover {
+    background-color: var(--button-hover-bg, #ddd);
+}
+/*.tag {*/
+/*    font-size: 16px; !* Увеличиваем текст *!*/
+/*    padding: 5px 10px; !* Добавляем внутренний отступ *!*/
+/*    border-radius: 15px; !* Скругляем края *!*/
+/*    background-color: var(--tag-bg, lightgray); !* Цвет фона (если нужно, можно сделать переменной) *!*/
+/*    color: var(--tag-color, black); !* Цвет текста *!*/
+/*    display: inline-block; !* Убедимся, что они идут в строку *!*/
+/*    margin-right: 10px; !* Добавляем отступ между тегами *!*/
+/*}*/
+
+/*.add-tag-button {*/
+/*    position: absolute;*/
+/*    top: 500px; !* Скорректируйте высоту *!*/
+/*    left: 1400px; !* Разместите ближе к основной области *!*/
+/*    width: 61px;*/
+/*    height: 41px;*/
+/*    background: url(../../assets/images/plus.png) no-repeat center, #ffffff;*/
+/*    border-radius: 20px;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*}*/
+
 .add-project-button{                /* кнопка добавить проект*/
     position: absolute;
     top: 700px;

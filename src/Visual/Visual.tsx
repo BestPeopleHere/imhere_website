@@ -31,11 +31,14 @@ class Visual {
         this.appVisual?.authReg.update();
     }
 
+
     toSauna()
     {
         this.appVisual?.authReg.navigate('/sauna');
        // this.appVisual?.authReg.update();
     }
+
+
 
     toEditProfile()
     {
@@ -49,7 +52,18 @@ class Visual {
         this.appVisual?.reg.navigate('/');
     }
 
+    toProfile() {
+        this.appVisual?.search.navigate('/profile');
+        this.appVisual?.search.update();
+    }
+
+    toSearch(){
+        this.appVisual?.profile.navigate('/search');
+        this.appVisual?.profile.update();
+    }
+
     public appVisual: AppVisual | undefined;
 }
+
 
 export default Visual;
