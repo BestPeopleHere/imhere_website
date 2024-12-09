@@ -1,3 +1,5 @@
+import Tag from "./Elements/Tag.tsx";
+import TagWindow from "./Elements/TagWindow.tsx";
 import VisualObject from "../ItcHyFeeL/VisualObject.tsx";
 import Element from "../ItcHyFeeL/Element";
 import EditButton from "./Elements/EditButton"
@@ -9,12 +11,24 @@ import Avatar from "./Elements/Avatar.tsx";
 import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
 import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
+
 import SearchButton from "./Elements/SearchButton.tsx";
 import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
+
+import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
+
 
 
 
 class Profile extends VisualObject {
+    isTagWindowVisible: boolean = false;
+    tags: { label: string; color: string }[] = [
+        { label: "Кошка", color: "#FFC0CB" },
+        { label: "Собака", color: "#FFD700" },
+        { label: "Кулинария", color: "#98FB98" },
+        { label: "Программирование", color: "#ADD8E6" },
+    ];
+
     constructor() {
         super();
         this.editButton = new EditButton();
@@ -36,7 +50,33 @@ class Profile extends VisualObject {
 
     render() {
         return (
+
             <div className='main-container'>
+                {this.isTagWindowVisible && (
+                    <div className='overlay' onClick={this.hideTagWindow}/>
+                )}
+                {this.isTagWindowVisible && (
+                    <Element
+                        instance={this.editTags}
+                        className="tag-window-container"
+                    />
+                )}
+
+                <div className="tags-container">
+                    {this.tags.map((tag, index) => (
+                        <Element
+                            key={index}
+                            instance={new Tag(tag.label, tag.color)}
+                            className="tag"
+                        />
+                    ))}
+                    {/*<button*/}
+                    {/*    className="add-tag-button"*/}
+                    {/*    onClick={this.showTagWindow}>*/}
+                    {/*    +*/}
+                    {/*</button>*/}
+                </div>
+
                 {/* Темный фон с полупрозрачностью, если окно активно */}
                 {this.isShowEditWindow && <div className='overlay' onClick={this.hideEditWindow}/>}
 
@@ -58,15 +98,20 @@ class Profile extends VisualObject {
                 <button className="top-exit-button">Выйти</button>
 
                 <button className="add-project-button"></button>
-                <button className="add-tag-button"></button>
+                {/*<button className="add-tag-button"></button>*/}
+                <button
+                    className="add-tag-button"
+                    onClick={() => this.showTagWindow()} // Привязка события
+                ></button>
+
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
 
-                <div className="text-nickname">{this.nickname}</div>
-                <div className="text-status">{this.status}</div>
-                <div className="text-description">{this.description}</div>
-                <div className="text-birthday">{this.birthday}</div>
-                <div className="text-sex">{this.sex}</div>
+                <div className="text-nickname">{this.userProfile?.nickname}</div>
+                <div className="text-status">{this.userProfile?.status}</div>
+                <div className="text-description">{this.userProfile?.description}</div>
+                <div className="text-birthday">{this.userProfile?.birthday}</div>
+                <div className="text-sex">{this.userProfile?.sex}</div>
 
                 <div className="text-portfolio">Портфолио</div>
 
@@ -77,17 +122,19 @@ class Profile extends VisualObject {
         );
     }
 
-    updateInf(nickname: string|undefined,status: string|undefined, description: string|undefined,birthday: string|undefined,sex: string|undefined,link_to_avatar:string|undefined)
-    {
-        this.nickname = nickname;
-        this.status = status;
-        this.description = description;
-        this.birthday = birthday;
-        this.sex=sex;
-        this.link_to_avatar = link_to_avatar;
+    updateInf(userProfile: UserProfileDTO|null) {
 
-        this.avatar.avatarUrl=link_to_avatar;
-        console.log("link: ",link_to_avatar);
+        this.userProfile=userProfile;
+        //
+        // this.nickname = nickname;
+        // this.status = status;
+        // this.description = description;
+        // this.birthday = birthday;
+        // this.sex=sex;
+        // this.link_to_avatar = link_to_avatar;
+        //
+        // this.avatar.avatarUrl=link_to_avatar;
+        // console.log("link: ",link_to_avatar);
 
         this.forceUpdate();
     }
@@ -100,6 +147,24 @@ class Profile extends VisualObject {
         this.getInfProgileController.performe();
     }
 
+    showTagWindow = () => {
+        console.log("Клик по кнопке +");
+        this.isTagWindowVisible = true;
+        this.forceUpdate();
+    };
+
+    hideTagWindow = () => {
+        this.isTagWindowVisible = false; // Скрываем окно
+        this.forceUpdate(); // Обновляем интерфейс
+    };
+
+
+    addTags = (newTags: { label: string; color: string }[]) => {
+        this.tags = [...this.tags, ...newTags];
+        this.hideTagWindow();
+    };
+
+
     editButton: EditButton;
     searchButton: SearchButton;
     button: Button = new Button();
@@ -109,6 +174,8 @@ class Profile extends VisualObject {
     getInfProgileController:GetInfProfileUser = new GetInfProfileUser();
 
     editWindow: EditWindow=new EditWindow();
+    editTags: TagWindow=new TagWindow();
+
 
 
     nickname: string|undefined="none";
@@ -117,6 +184,9 @@ class Profile extends VisualObject {
     birthday: string|undefined="none";
     sex: string|undefined="none";
     link_to_avatar: string|undefined="none";
+
+    userProfile: UserProfileDTO|null=null;
+
 }
 
 export default Profile;

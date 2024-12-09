@@ -12,17 +12,11 @@ class EditProfileController extends Controller {
             Data.visual.appVisual?.profile.editWindow.birthdayInput.getValue(),
             Data.visual.appVisual?.profile.editWindow.genderInput.getValue());
 
-        //
-        // await Data.bc.editUserProfile("писька",
-        //     "говно",
-        //     "жопа",
-        //     "2020-10-10",
-        //     "MALE");
 
         Data.visual.appVisual?.profile.hideEditWindow();
 
         const data = await Data.bc.getUserProfile();
-        Data.visual.appVisual?.profile.updateInf(data?.nickname,data?.status,data?.description,data?.birthday,data?.sex);
+        Data.visual.appVisual?.profile.updateInf(data);
     }
 }
 

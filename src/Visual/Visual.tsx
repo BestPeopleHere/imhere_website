@@ -31,11 +31,14 @@ class Visual {
         this.appVisual?.authReg.update();
     }
 
+
     toSauna()
     {
         this.appVisual?.authReg.navigate('/sauna');
        // this.appVisual?.authReg.update();
     }
+
+
 
     toEditProfile()
     {
