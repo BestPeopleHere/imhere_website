@@ -141,8 +141,12 @@ class Profile extends VisualObject {
 
     readyToBeRendered() {
         this.editButton.setActionController(new ShowEditProfileController());
+
        // this.buttonSetPhoto.setActionController(new SetAvatarController());
         this.searchButton.setActionController(new ToSearchButtonController());
+
+        this.buttonSetPhoto.setActionController(new SetAvatarController());
+
 
         this.getInfProgileController.performe();
     }

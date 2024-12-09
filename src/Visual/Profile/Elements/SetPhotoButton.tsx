@@ -3,6 +3,7 @@ import  { ChangeEvent } from "react";
 import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import "./SetPhotoButton.css"
 import downloadIcon from "../../../assets/images/download.png";
+
 import SetAvatarController from "../../../Controller/SetAvatarController.tsx";
 
 class SetPhotoButton extends Button {
@@ -21,7 +22,7 @@ class SetPhotoButton extends Button {
         <div className="set-photo-button-container">
             {/* Кнопка для загрузки */}
             <button
-                id={this.id}
+               // id={this.id}
                 className="download-photo-button"
                 onClick={this.handleButtonClick}
             >
@@ -46,8 +47,8 @@ class SetPhotoButton extends Button {
         if (fileInput) {
             fileInput.click(); // Открыть диалог выбора файла
         }
-        const setAvatarController:SetAvatarController=new SetAvatarController();
-        setAvatarController.performe();
+
+
     }
 
     handleFileChange(event: ChangeEvent<HTMLInputElement>) {
@@ -56,6 +57,8 @@ class SetPhotoButton extends Button {
             this.file = selectedFile;
             console.log("File uploaded:", this.file);
         }
+
+        this.controller?.performe();
     }
 
     file: File | null = null;

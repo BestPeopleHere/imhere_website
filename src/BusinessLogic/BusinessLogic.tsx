@@ -109,8 +109,39 @@ class BusinessLogic {
 
         try {
            // const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('token')}`, {
-            const response = await fetch(`https://imhere.space:5656/api/profile/${1}`, {
+            const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('id')}`, {
                 method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`, // Вставляем токен в заголовок Authorization
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+
+            console.log("token: ", sessionStorage.getItem('token'));
+
+            const data = response.headers.get("Content-Length") === "0" ? null : await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    async createUserProfile( ): Promise<void> {
+        const body = {
+            nickname: "newNickname",
+            status: "Всем привет я крутой",
+            description: "Я есть ляляля",
+            birthday: "2000-11-30",
+            sex: "FEMALE",
+        };
+
+        console.log("body: ", body);
+
+        try {
+            // const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('token')}`, {
+            const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('id')}`, {
+                method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`, // Вставляем токен в заголовок Authorization
                     'Content-Type': 'application/json'
@@ -132,11 +163,12 @@ class BusinessLogic {
 
         if (file==undefined || file==null) {return;}
 
-        formData.append('file', file); // Добавляем файл в тело запроса
+        formData.append('image', file); // Добавляем файл в тело запроса
+        console.log(file);
 
         try {
-            const response = await fetch(`https://imhere.space:5656/api/profile/avatar/${1}`, {
-                method: 'POST', // Метод POST, если нужно загрузить файл
+            const response = await fetch(`https://imhere.space:5656/api/profile/avatar/${sessionStorage.getItem('id')}`, {
+                method: 'PUT', // Метод POST, если нужно загрузить файл
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Добавляем токен в заголовок Authorization
                     // 'Content-Type' не указывается, так как FormData автоматически устанавливает Content-Type
@@ -158,10 +190,16 @@ class BusinessLogic {
         }
     }
 
+
     async getUserProfile(): Promise<UserProfileDTO | null> {
+
+
+
+  //  async getUserProfile(): Promise<UserProfile | null> {
+
         try {
             //const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('token')}`, {
-            const response = await fetch(`https://imhere.space:5656/api/profile/${1}`, {
+            const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('id')}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
@@ -235,15 +273,18 @@ class BusinessLogic {
 
             const data = await response.json(); // Получаем данные как AuthenticationResponse
             this.token = data.access_token;
+
+            console.log("data reg: ", data);
+
             sessionStorage.setItem('token', this.token);
 
-            const userId:string |null=this.getUserIdFromToken(data.access_token);
+            const userId:string |null=data.id;
 
             if (userId!=null) {
                 sessionStorage.setItem('id', userId);
             }
 
-            console.log("data: ",data.access_token," id: ",sessionStorage.getItem('token'));
+            console.log("data: ",data.access_token," id: ",sessionStorage.getItem('id'));
 
             return "data"; // Возвращаем данные
 
@@ -277,11 +318,13 @@ class BusinessLogic {
             this.token = data.access_token;
             sessionStorage.setItem('token', this.token);
 
-            const userId:string |null=this.getUserIdFromToken(data.access_token);
+            const userId:string |null=data.id;
 
             if (userId!=null) {
                 sessionStorage.setItem('id', userId);
             }
+
+            console.log("data reg: ", data);
 
 
             // const decodedToken = jwt_decode(this.token);
@@ -290,7 +333,7 @@ class BusinessLogic {
             // console.log('User ID:', decodedToken.userId);
             // console.log('Token Expiration Time:', new Date(decodedToken.exp * 1000).toLocaleString());
 
-            console.log("data: ",data.access_token," id: ",sessionStorage.getItem('token'));
+            console.log("data: ",sessionStorage.getItem('token')," id: ",sessionStorage.getItem('id'));
 
             return "data"; // Возвращаем данные
 
