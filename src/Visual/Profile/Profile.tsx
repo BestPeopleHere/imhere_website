@@ -16,18 +16,23 @@ import SearchButton from "./Elements/SearchButton.tsx";
 import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
 
 import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
+import AddTagButton from "./Elements/AddTagButton.tsx";
+import addTagButton from "./Elements/AddTagButton.tsx";
+import GetUsersTagsForEditController from "../../Controller/GetUsersTagsForEditController.tsx";
+import TagDTO from "../../Controller/DTO/TagDTO.tsx";
+import GetTagsController from "../../Controller/GetTagsController.tsx";
 
 
 
 
 class Profile extends VisualObject {
     isTagWindowVisible: boolean = false;
-    tags: { label: string; color: string }[] = [
-        { label: "Кошка", color: "#FFC0CB" },
-        { label: "Собака", color: "#FFD700" },
-        { label: "Кулинария", color: "#98FB98" },
-        { label: "Программирование", color: "#ADD8E6" },
-    ];
+    // tags: { label: string; color: string }[] = [
+    //     { label: "Кошка", color: "#FFC0CB" },
+    //     { label: "Собака", color: "#FFD700" },
+    //     { label: "Кулинария", color: "#98FB98" },
+    //     { label: "Программирование", color: "#ADD8E6" },
+    // ];
 
     constructor() {
         super();
@@ -63,10 +68,10 @@ class Profile extends VisualObject {
                 )}
 
                 <div className="tags-container">
-                    {this.tags.map((tag, index) => (
+                    {this.tags.map((tag: TagDTO) => (
                         <Element
-                            key={index}
-                            instance={new Tag(tag.label, tag.color)}
+                            key={tag.id}
+                            instance={new Tag(tag.tag_name)}
                             className="tag"
                         />
                     ))}
@@ -99,10 +104,14 @@ class Profile extends VisualObject {
 
                 <button className="add-project-button"></button>
                 {/*<button className="add-tag-button"></button>*/}
-                <button
-                    className="add-tag-button"
-                    onClick={() => this.showTagWindow()} // Привязка события
-                ></button>
+
+
+                <Element instance={this.addTagButton}/>
+
+                {/*<button*/}
+                {/*    className="add-tag-button"*/}
+                {/*    onClick={() => this.showTagWindow()} // Привязка события*/}
+                {/*></button>*/}
 
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
@@ -133,7 +142,7 @@ class Profile extends VisualObject {
         // this.sex=sex;
         // this.link_to_avatar = link_to_avatar;
         //
-        // this.avatar.avatarUrl=link_to_avatar;
+         this.avatar.avatarUrl=userProfile?.link_to_avatar;
         // console.log("link: ",link_to_avatar);
 
         this.forceUpdate();
@@ -146,6 +155,11 @@ class Profile extends VisualObject {
         this.searchButton.setActionController(new ToSearchButtonController());
 
         this.buttonSetPhoto.setActionController(new SetAvatarController());
+        this.addTagButton.setActionController(new GetUsersTagsForEditController());
+
+
+        const getTags:GetTagsController=new GetTagsController();
+        getTags.performe();
 
 
         this.getInfProgileController.performe();
@@ -163,10 +177,10 @@ class Profile extends VisualObject {
     };
 
 
-    addTags = (newTags: { label: string; color: string }[]) => {
-        this.tags = [...this.tags, ...newTags];
-        this.hideTagWindow();
-    };
+    // addTags = (newTags: { label: string; color: string }[]) => {
+    //     this.tags = [...this.tags, ...newTags];
+    //     this.hideTagWindow();
+    // };
 
 
     editButton: EditButton;
@@ -179,6 +193,10 @@ class Profile extends VisualObject {
 
     editWindow: EditWindow=new EditWindow();
     editTags: TagWindow=new TagWindow();
+
+    addTagButton: AddTagButton = new AddTagButton();
+
+    tags: TagDTO[]|null=[];
 
 
 

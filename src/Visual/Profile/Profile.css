@@ -116,17 +116,7 @@
 /*    !*background: url(../../assets/images/download.png) no-repeat center, #2c2c2c;*!*/
 /*    !*border-radius: 20px;*!*/
 /*}*/
-.add-tag-button{                     /* кнопка добавить тэг*/
-    position: absolute;
-    top: 540px;
-    left: 1800px;
-    width: 61px;
-    height: 41px;
-    background:url(../../assets/images/plus.png) no-repeat center, #ffffff;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-}
+
 .tags-container {
     position: absolute;
     top: 540px;
@@ -184,9 +174,11 @@
 /*    transition: background-color 0.2s ease;*/
 /*}*/
 
-.add-tag-button:hover {
-    background-color: var(--button-hover-bg, #ddd);
-}
+
+
+
+
+
 /*.tag {*/
 /*    font-size: 16px; !* Увеличиваем текст *!*/
 /*    padding: 5px 10px; !* Добавляем внутренний отступ *!*/

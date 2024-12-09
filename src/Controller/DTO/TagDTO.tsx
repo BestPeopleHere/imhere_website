@@ -1,10 +1,7 @@
-interface TagCategory {
-    id: number;
-    category_name: string;
-}
+import TagCategory from "./TagCategory.tsx";
 
 export default interface TagDTO {
-    tag_id: number;
+    id: number;
     tag_name: string;
-    tag_category: TagCategory;
+    tagCategory: TagCategory;
 }

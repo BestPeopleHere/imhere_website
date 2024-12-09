@@ -250,6 +250,61 @@ class BusinessLogic {
         }
     }
 
+    async getUserProfileTags(): Promise<TagDTO[] | null> {
+        try {
+            const response = await fetch(`https://imhere.space:5656/api/tags/${sessionStorage.getItem('id')}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                    'Accept': 'application/json'
+                }
+            });
+
+            console.log("token: ", sessionStorage.getItem('token'));
+
+            if (!response.ok) {
+                console.error('Failed to fetch tags:', response.statusText);
+                return null;
+            }
+
+            const data: TagDTO[] = await response.json();
+            console.log("Tags received:", data);
+            return data;
+        } catch (error) {
+            console.error('Error fetching tags:', error);
+            return null;
+        }
+    }
+
+    async updateUserTags(tagIds: number[]|undefined): Promise<boolean> {
+        try {
+            const response = await fetch(`https://imhere.space:5656/api/tags/${sessionStorage.getItem('id')}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tags: tagIds }) // Отправляем объект с массивом тегов
+            });
+
+            console.log("Token:", sessionStorage.getItem('token'));
+
+            if (!response.ok) {
+                console.error('Failed to update user tags:', response.statusText);
+                return false;
+            }
+
+            console.log('Tags successfully updated');
+            return true;
+        } catch (error) {
+            console.error('Error updating user tags:', error);
+            return false;
+        }
+    }
+
+
+
 
     async registerUser(email: string | undefined, password: string| undefined): Promise<string | null>
     {

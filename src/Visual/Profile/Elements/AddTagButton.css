@@ -1,0 +1,16 @@
+
+.add-tag-button{                     /* кнопка добавить тэг*/
+    position: absolute;
+    top: 540px;
+    left: 1800px;
+    width: 61px;
+    height: 41px;
+    background:url(../../../assets/images/plus.png) no-repeat center, #ffffff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.add-tag-button:hover {
+    background-color: var(--button-hover-bg, #ddd);
+}

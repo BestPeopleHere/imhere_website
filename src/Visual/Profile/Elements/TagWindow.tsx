@@ -3,6 +3,8 @@ import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import Element from "../../ItcHyFeeL/Element";
 import Button from "../../ItcHyFeeL/DoneElements/Button";
 import TagDTO from "../../../Controller/DTO/TagDTO.tsx";
+import TagCategory from "../../../Controller/DTO/TagCategory.tsx";
+import SaveTagsController from "../../../Controller/SaveTagsController.tsx";
 
 class TagWindow extends VisualObject {
     constructor() {
@@ -12,38 +14,12 @@ class TagWindow extends VisualObject {
         this.handleTagSelection = this.handleTagSelection.bind(this);
         this.toggleCategory = this.toggleCategory.bind(this);
         this.readyToBeRendered = this.readyToBeRendered.bind(this);
-
-        this.state = {
-            tags: {
-                "Жанры фильмов": ["Драма", "Комедия", "Триллер", "Фантастика", "Ужасы"],
-                "Жанры игр": ["RPG", "Экшен", "Головоломка", "Шутер", "Стратегия"],
-                "Хобби": ["Фотография", "Рисование", "Чтение", "Спорт", "Музыка"],
-                "Отношение к курению да ладно": ["Не курю", "Курю", "Отказался"],
-                "Отношение к алкоголю": ["Не пью", "Пью умеренно", "Пью часто"],
-            },
-            selectedTags: {
-                "Жанры фильмов": [],
-                "Жанры игр": [],
-                "Хобби": [],
-                "Отношение к курению а": [],
-                "Отношение к алкоголю": [],
-            },
-            expandedCategories: {
-                "Жанры фильмов": false,
-                "Жанры игр": false,
-                "Хобби": false,
-                "Отношение к курению че": false,
-                "Отношение к алкоголю": false,
-            }
-        };
     }
 
-    toggleCategory(category: string) {
-        const { expandedCategories } = this.state;
-        this.state.expandedCategories = {
-            ...expandedCategories,
-            [category]: !expandedCategories[category],
-        };
+    toggleCategory(category: TagCategory) {
+
+        this.showCategories[category.id] = !this.showCategories[category.id];
+
         this.forceUpdate();
     }
 
@@ -57,31 +33,31 @@ class TagWindow extends VisualObject {
     handleTagSelectionOut(tag: TagDTO) {
         if (this.selectedTags)
         {
-            this.selectedTags = this.selectedTags.filter(selected => selected.tag_id !== tag.tag_id);
+            this.selectedTags = this.selectedTags.filter(selected => selected.id !== tag.id);
             this.forceUpdate();
         }
     }
 
     readyToBeRendered() {
         this.saveButton.setText('Сохранить');
-        this.saveButton.setActionController(() => {
-            console.log("Теги сохранены!", this.state.selectedTags);
-            this.hideTagW\ndow();
-        });
+         this.saveButton.setActionController(new SaveTagsController());
+        //     console.log("Теги сохранены!", this.state.selectedTags);
+        //     this.hideTagWndow();
+        // });
     }
 
     render() {
         return (
             <div className={styles['main-container']}>
-                <button className={styles.exit} onClick={this.hideTagWindow}>×</button>
+                {/*<button className={styles.exit} onClick={this.hideTagWindow}>×</button>*/}
                 <span className={styles.name}>Добавить новый тег</span>
 
                 <div className={styles['form-container']}>
                     <div className={styles['category-container']}>
-                        {this.categories.map(category => (
-                            <div key={category} className={styles['category-section']}>
+                        {this.categories?.map((category: TagCategory) => (
+                            <div key={category.id} className={styles['category-section']}>
                                 <div className={styles['category-header']}>
-                                    <span className={styles['category-title']}>{category}</span>
+                                    <span className={styles['category-title']}>{category.category_name}</span>
                                     <button
                                         className={`${styles['toggle-button']} `}
                                         onClick={() => this.toggleCategory(category)}
@@ -90,7 +66,8 @@ class TagWindow extends VisualObject {
 
                                 {/* Всегда отображаем выбранные теги */}
                                 <div className={styles['selected-tags-container']}>
-                                    {this.selectedTags?.map((tag: TagDTO) => (
+                                    {this.selectedTags?.filter(tag =>
+                                        tag.tagCategory.id === category.id).map((tag: TagDTO) => (
                                         <button
                                             key={`selected-${tag.tag_name}`}
                                             className={`${styles['tag-option']} ${styles.active}`}
@@ -105,7 +82,9 @@ class TagWindow extends VisualObject {
                                 {(
                                     <div className={styles['tag-options-container']}>
                                         {this.tags?.filter(tag =>
-                                            !this.selectedTags?.some((selected: TagDTO) => selected.tag_id === tag.tag_id) // Исключаем выбранные теги
+                                            this.showCategories[category.id] &&
+                                            tag.tagCategory.id === category.id &&
+                                            !this.selectedTags?.some((selected: TagDTO) => selected.id === tag.id ) // Исключаем выбранные теги
                                         ).map((tag: TagDTO) => (
                                             <button
                                                 key={`available-${tag}`}
@@ -136,26 +115,42 @@ class TagWindow extends VisualObject {
         this.selectedTags = userTags ? [...userTags] : null;
         this.categories=this.getUniqueCategories(tags);
 
+        //console.log(categories);
+
     }
 
-    getUniqueCategories(tags: TagDTO[]|null): string[] {
+    getUniqueCategories(tags: TagDTO[] | null): TagCategory[] | null {
+        if (tags == null) {
+            return null;
+        }
 
-        if (tags == null) {return [""]}
-
-        const uniqueCategories = new Set<string>();
+        const uniqueCategories = new Map<number, TagCategory>();
 
         tags.forEach(tag => {
-            uniqueCategories.add(tag.tag_category.category_name);
+            uniqueCategories.set(tag.tagCategory.id, tag.tagCategory); // Сохраняем TagCategory с уникальным id
+            this.showCategories[tag.tagCategory.id] = false;
         });
 
-        return Array.from(uniqueCategories);
+        return Array.from(uniqueCategories.values()); // Возвращаем массив уникальных категорий
     }
+
+    getSelectedTagIds(): number[] {
+        if (!this.selectedTags) {
+            return []; // Если selectedTags равен null или undefined, возвращаем пустой массив
+        }
+
+        return this.selectedTags.map(tag => tag.id); // Преобразуем массив объектов в массив id
+    }
+
+
+
 
 
     saveButton: Button;
     tags:TagDTO[]|null=null;
     selectedTags: TagDTO[]|null|undefined;
-    categories:string[]=["Жанры фильмов","Жанры игр","Хобби", "Отношение к курению да ладно", "Отношение к алкоголю"];
+    categories:TagCategory[]|null=null;
+    showCategories: { [key: number]: boolean } = {};
 }
 
 export default TagWindow;
