@@ -6,6 +6,7 @@ import VisualObject from "./ItcHyFeeL/VisualObject.tsx";
 import Element from "./ItcHyFeeL/Element.tsx";
 import Button from "./ItcHyFeeL/DoneElements/Button.tsx";
 import AuthReg from "./AuthReg/AuthReg.tsx";
+import Reg from "./Reg/Reg.tsx";
 import Profile from "./Profile/Profile.tsx";
 import SearchPage from "./SearchPage/SearchPage.tsx";
 import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
@@ -28,6 +29,7 @@ class AppVisual extends VisualObject {
                 {/*<Element instance={new Button()}/>*/}
 
                 <Routes>
+                    <Route path="/authreg" element={<Element instance={this.reg} />} />
                     <Route path="/" element={<Element instance={this.authReg} />} />
                     <Route path="/sauna" element={<Element instance={this.sauna} />} />
                     <Route path="/home" element={<Element instance={this.homePage} />} />
@@ -83,6 +85,7 @@ class AppVisual extends VisualObject {
     public homePage: HomePage;
     public sauna: Example=new Example();
     public authReg: AuthReg=new AuthReg();
+    public reg: Reg=new Reg();
     public profile: Profile=new Profile();
     public editWindow: EditWindow=new EditWindow();
     public search: SearchPage=new SearchPage();
