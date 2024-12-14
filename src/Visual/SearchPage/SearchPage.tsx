@@ -13,6 +13,8 @@ import BackSearchButtonController from "../../Controller/BackSearchButtonControl
 import ShowResultSearchButtonController from "../../Controller/ShowResultSearchButtonController.tsx";
 import PeopleCards from "./PeopleCards/PeopleCards.tsx";
 import Request from "./Elements/Request.tsx";
+import UserCard from "./UserCard/UserCard.tsx";
+import SearchController from "../../Controller/Search/SearchController.tsx";
 
 
 
@@ -45,25 +47,23 @@ class SearchPage extends VisualObject {
 
     render() {
         return (
-            <div className='main-container'>
-                <div className='search-imhere-logo'>ImHere</div>
-                <div className='search-field'>
 
-                    <Element instance={this.request} className='search-field' />
-
+            <div className="main-container">
+                <div className="scroll-container">
+                    <div className="search-imhere-logo">ImHere</div>
+                    <div className="search-field">
+                        <Element instance={this.request} className="search-field"/>
+                    </div>
+                    {this.isShowPeopleCards && <div onClick={this.hidePeopleCards}/>}
+                    {this.isShowPeopleCards && (
+                        <Element instance={this.peopleCards} className="card-background"/>
+                    )}
+                    <Element instance={this.peopleButton} className="people-search-button"/>
+                    <Element instance={this.projectButton} className="project-search-button"/>
+                    <Element instance={this.backButton} className="back-button"/>
+                    <Element instance={this.resultButton} className="result-button"/>
+                    <Element instance={this.filterButton} className="filter-button"/>
                 </div>
-                {this.isShowPeopleCards && <div  onClick={this.hidePeopleCards}/>}
-
-                {/* Окно EditWindow, видимо, если showEditWindow === true */}
-                {this.isShowPeopleCards && (
-                    <Element instance={this.peopleCards} className='card-background'/>
-                )}
-                <Element instance={this.peopleButton} className='people-search-button' />
-                <Element instance={this.projectButton} className='project-search-button' />
-                <Element instance={this.backButton} className='back-button'/>
-                <Element instance={this.resultButton} className='result-button'/>
-                <Element instance={this.filterButton} className='filter-button'/>
-
             </div>
         );
     }
@@ -72,7 +72,7 @@ class SearchPage extends VisualObject {
         this.peopleButton.setActionController(new PeopleSearchController());
         this.projectButton.setActionController(new ProjectSearchController());
         this.backButton.setActionController(new BackSearchButtonController());
-        this.resultButton.setActionController(new ShowResultSearchButtonController());
+        this.resultButton.setActionController(new SearchController());
         this.filterButton.setActionController(new FilterSearchButtonController());
 
     }
@@ -84,7 +84,9 @@ class SearchPage extends VisualObject {
     filterButton: FilterButton;
     request: Request;
     isShowPeopleCards: boolean = false;
-    peopleCards: PeopleCards=new PeopleCards();
+    peopleCards: PeopleCards = new PeopleCards();
+
+
 
 }
 

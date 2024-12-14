@@ -12,6 +12,7 @@ import SearchPage from "./SearchPage/SearchPage.tsx";
 import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
 import Example from "./Example/Example.tsx";
 import ToSauna from "../Controller/ToSauna.tsx";
+import OtherProfile from "./Profile/OtherProfile.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -36,6 +37,7 @@ class AppVisual extends VisualObject {
                     <Route path="/profile" element={<Element instance={this.profile} />} />
                     <Route path="/profile/edit" element={<Element instance={this.editWindow} />} />
                     <Route path="/search" element={<Element instance={this.search} />} />
+                    <Route path="/profile/:id" element={<Element instance={this.otherProfile} />} />
 
                 </Routes>
             </Router>
@@ -89,6 +91,7 @@ class AppVisual extends VisualObject {
     public profile: Profile=new Profile();
     public editWindow: EditWindow=new EditWindow();
     public search: SearchPage=new SearchPage();
+    public otherProfile: OtherProfile=new OtherProfile();
 
 
     //  navigate: NavigateFunction = useNavigate();

@@ -1,6 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import TagDTO from "../Controller/DTO/TagDTO.tsx";
 import UserProfileDTO from "../Controller/DTO/UserProfileDTO.tsx";
+import UserFoundDTO from "../Controller/DTO/UserFoundDTO.tsx";
 
 
 // interface UserProfile {
@@ -224,6 +225,39 @@ class BusinessLogic {
         }
     }
 
+    async getOtherUserProfile(id:number|string|undefined): Promise<UserProfileDTO | null> {
+
+
+
+        //  async getUserProfile(): Promise<UserProfile | null> {
+
+        try {
+            //const response = await fetch(`https://imhere.space:5656/api/profile/${sessionStorage.getItem('token')}`, {
+            const response = await fetch(`https://imhere.space:5656/api/profile/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                    'Accept': 'application/json'
+                }
+            });
+
+
+            console.log("token: ", sessionStorage.getItem('token')," id: ",sessionStorage.getItem('id'));
+
+            if (!response.ok) {
+                console.error('Failed to fetch user profile:', response.statusText);
+                return null;
+            }
+
+            const data: UserProfileDTO = await response.json();
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
+            return null;
+        }
+    }
+
     async getTags(): Promise<TagDTO[] | null> {
         try {
             const response = await fetch('https://imhere.space:5656/api/tags', {
@@ -395,6 +429,63 @@ class BusinessLogic {
         } catch (error) {
             console.error('Error during registration:', error);
             return null; // Возвращаем объект с сообщением об ошибке
+        }
+    }
+
+
+    async searchUsers(description: string | null, tags: TagDTO[] | null): Promise<UserFoundDTO[]> {
+        try {
+            // Преобразуем TagDTO[] в массив id
+            const tagIds = tags ? tags.map(tag => tag.id) : [];
+
+            const response = await fetch('https://imhere.space:5656/api/search', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                // body: JSON.stringify(requestBody)
+                body: JSON.stringify({
+                    description: description || "", // Если description null, отправляем пустую строку
+                    tags: tagIds  // Массив id из TagDTO
+                })
+            });
+
+            console.log("Token:", sessionStorage.getItem('token'));
+
+            if (!response.ok) {
+                console.error('Failed to search users:', response.statusText);
+                return [];
+            }
+
+            const data = await response.json();
+            console.log("Users found:", data);
+
+            // Преобразуем данные в массив UserFoundDTO
+            const users: UserFoundDTO[] = data.map((user: any) => ({
+                id: user.id,
+                nickname: user.nickname,
+                description: user.description,
+                link_to_avatar: user.link_to_avatar,
+                tags: user.tags
+                    ? user.tags.map((tag: any) => ({
+                        id: tag.tag_id,
+                        tag_name: tag.tag_name,
+                        tagCategory: tag.tag_category
+                            ? {
+                                id: tag.tag_category.id,
+                                category_name: tag.tag_category.category_name
+                            }
+                            : null // Если tag_category отсутствует
+                    }))
+                    : [] // Если tags отсутствуют
+            }));
+
+            return users;
+        } catch (error) {
+            console.error('Error searching users:', error);
+            return [];
         }
     }
 

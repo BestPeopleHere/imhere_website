@@ -1,6 +1,9 @@
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import "./Avatar.css"
 
+import defaultAvatar from "../../../assets/avatar/default.jpg";
+
+
 class Avatar extends VisualObject {
     constructor() {
         super();
@@ -8,7 +11,7 @@ class Avatar extends VisualObject {
 
     render() {
         return (
-                <img src={this.avatarUrl}
+                <img src={this.avatarUrl ? this.avatarUrl : defaultAvatar}
                       className="photo-element"
                 />
         );
@@ -25,7 +28,7 @@ class Avatar extends VisualObject {
         this.forceUpdate();
     }
 
-    avatarUrl: string|undefined="/rik.png";
+    avatarUrl: string|undefined="/default.jpg";
 
 }
 
