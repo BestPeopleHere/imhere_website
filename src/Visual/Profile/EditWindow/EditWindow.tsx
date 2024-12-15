@@ -4,7 +4,6 @@ import Element from "../../ItcHyFeeL/Element";
 import Status from "./Elements/Status";
 import Input from "../../ItcHyFeeL/DoneElements/Input";
 import About from "./Elements/About";
-import NameInput from "./Elements/NameInput";
 import NicknameInput from "./Elements/NicknameInput";
 import SaveButton from "./Elements/SaveButton";
 import ExitButton from "./Elements/ExitButton";
@@ -16,7 +15,6 @@ class EditWindow extends VisualObject {
     constructor() {
         super();
         this.nicknameInput = new NicknameInput();
-        this.nameInput = new NameInput();
         this.birthdayInput = new BirthdayInput();
         //this.birthdayInput = new NameInput();
         this.genderInput = new GenderInput();
@@ -33,9 +31,6 @@ class EditWindow extends VisualObject {
 
                 <span className={styles.name}>Никнейм</span>
                 <Element instance={this.nicknameInput} className={styles['rectangle-1']}/>
-
-                <span className={styles.name}>Имя</span>
-                <Element instance={this.nameInput} className={styles['rectangle-1']}/>
 
                 <span className={styles.name}>Дата рождения</span>
                 <Element instance={this.birthdayInput} className={styles['rectangle-4']}/>
@@ -61,7 +56,6 @@ class EditWindow extends VisualObject {
             }
 
     nicknameInput: Input;
-    nameInput: Input;
     birthdayInput: Input;
     genderInput: Input;
     status: Status;

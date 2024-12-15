@@ -6,6 +6,12 @@ class EditProfileController extends Controller {
         console.log("EditProfileController Controller");
         //Data.visual.toEditProfile();
 
+        console.log("Данные ",Data.visual.appVisual?.profile.editWindow.nicknameInput.getValue(),
+            Data.visual.appVisual?.profile.editWindow.status.getValue(),
+            Data.visual.appVisual?.profile.editWindow.about.getValue(),
+            Data.visual.appVisual?.profile.editWindow.birthdayInput.getValue(),
+            Data.visual.appVisual?.profile.editWindow.genderInput.getValue());
+
         await Data.bc.editUserProfile(Data.visual.appVisual?.profile.editWindow.nicknameInput.getValue(),
             Data.visual.appVisual?.profile.editWindow.status.getValue(),
             Data.visual.appVisual?.profile.editWindow.about.getValue(),

@@ -4,7 +4,7 @@ import styles from './GenderInput.module.css'; // Импорт стилей дл
 class GenderInput extends Input {
     constructor() {
         super();
-        this.value = 'default'; // Значение по умолчанию
+        this.value = 'MALE'; // Значение по умолчанию
     }
 
     render() {
@@ -32,9 +32,9 @@ class GenderInput extends Input {
                             paddingLeft: '36px'
                         }}
                     >
-                        <option value="default" disabled>Выберите пол</option>
-                        <option value="male">Мужской</option>
-                        <option value="female">Женский</option>
+                        <option value="MALE" disabled>Выберите пол</option>
+                        <option value="MALE">Мужской</option>
+                        <option value="FEMALE">Женский</option>
                     </select>
                 </div>
             </div>
@@ -44,6 +44,8 @@ class GenderInput extends Input {
     public getValue(): string {
         return this.value;
     }
+
+    value: string = 'MALE';
 }
 
 export default GenderInput;

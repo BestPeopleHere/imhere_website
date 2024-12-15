@@ -195,8 +195,8 @@
 
 .text-description{
     position: absolute;
-    top: 350px;
-    left: 600px;
+    top: 250px;
+    left: 590px;
     color: #ffffff;
     font-size: 20px;
     font-family: Inter, var(--default-font-family);

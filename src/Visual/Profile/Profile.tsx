@@ -8,6 +8,7 @@ import Avatar from "./Elements/Avatar.tsx";
 import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
 import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
+import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
 
 
 class Profile extends VisualObject {
@@ -71,17 +72,19 @@ class Profile extends VisualObject {
         );
     }
 
-    updateInf(nickname: string|undefined,status: string|undefined, description: string|undefined,birthday: string|undefined,sex: string|undefined,link_to_avatar:string|undefined)
+    updateInf(userProfile: UserProfileDTO|null)
     {
-        this.nickname = nickname;
-        this.status = status;
-        this.description = description;
-        this.birthday = birthday;
-        this.sex = sex;
-        this.link_to_avatar = link_to_avatar;
 
-        this.avatar.avatarUrl = link_to_avatar;
-        console.log("link: ",link_to_avatar);
+
+        this.nickname = userProfile?.nickname;
+        this.status = userProfile?.status;
+        this.description = userProfile?.description;
+        this.birthday = userProfile?.birthday;
+        this.sex = userProfile?.sex;
+        this.link_to_avatar = userProfile?.link_to_avatar;
+
+        this.avatar.avatarUrl = userProfile?.link_to_avatar;
+        console.log("link: ",userProfile?.link_to_avatar,"description: ", userProfile?.description);
 
         this.forceUpdate();
     }

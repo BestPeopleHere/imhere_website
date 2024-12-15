@@ -43,7 +43,7 @@ class Input extends DoneElement {
         this.forceUpdate();
     }
 
-    protected placeholder: string = 'Вводи, дикле';
+    protected placeholder: string = 'Ввод';
     protected controller: Controller|null = null;
     protected value: string='';
 }
