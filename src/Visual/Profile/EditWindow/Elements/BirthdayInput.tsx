@@ -1,5 +1,6 @@
 import Input from "../../../ItcHyFeeL/DoneElements/Input.tsx";
 import $ from "jquery";
+import styles from './BirthdayInput.module.css'; // Импорт стилей для BirthdayInput
 
 class BirthdayInput extends Input {
     constructor() {
@@ -10,12 +11,29 @@ class BirthdayInput extends Input {
     render() {
         return (
             <div className={this.className}>
-                <div className="example-container">
+                <div className={styles['example-container']}>
                     <input
                         type="date"
-                        className="example-input"
+                        className={`${styles['example-input']} example-input`} // Добавляем классы стилей
                         id={this.id}
                         placeholder={this.placeholder}
+                        onChange={(event) => {
+                            this.value = event.target.value;
+                        }}
+                        style={{
+                            width: '200px',
+                            height: '70px',
+                            borderRadius: '50px',
+                            border: '1px solid #ccc',
+                            padding: '10px',
+                            paddingLeft: '32px',
+                            fontFamily: 'var(--default-font-family)', // Установка шрифта
+                            fontSize: '18px',
+                            outline: 'none',
+                            backgroundColor: 'white',
+                            color: '#D14C7B',
+                            fontWeight: 'normal'
+                        }}
                     />
                 </div>
             </div>

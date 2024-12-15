@@ -22,12 +22,12 @@ class AuthReg extends VisualObject {
         //this.logButton.setClassName('Button-2');
 
         this.error = new ErrorModal("все плохо");
-       // this.error.show("2222222222");
+        // this.error.show("2222222222");
     }
 
     render() {
         return (
-            <div className='main-container-3'>
+            <div className='main-container'>
                 <span className='text'>ImHere</span>
 
                 <div className='pic'>
@@ -37,10 +37,11 @@ class AuthReg extends VisualObject {
                 <button className='Button-2'/>
                 <div className='img-3'/>
 
-                <Element instance={this.emailInput} className='Button-3'/>
-                <Element instance={this.passwordInput} className='rectangle-3'/>
-
-                <Element instance={this.logButton} className='log-in'/>
+                <Element instance={this.emailInput} className='email-input-space'/>
+                <Element instance={this.passwordInput} className='password-input-space'/>
+                <div className="login-container">
+                    <Element instance={this.logButton} className='log-in'/>
+                </div>
                 <Element instance={this.createButton} className='create-account'/>
 
                 <Element instance={this.button}/>

@@ -8,10 +8,14 @@
 .main-container {
     overflow: hidden;
     position: relative;
-    width: 800px; /* Уменьшена ширина */
-    height: 1200px; /* Уменьшена высота */
+    width: 800px;
+    height: auto;
     background: #595959;
-    border-radius: 50px; /* Пропорционально уменьшен радиус */
+    border-radius: 50px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .main-container,
@@ -48,6 +52,13 @@ button {
     box-sizing: border-box;
 }
 
+.rectangle-4 {
+    position: relative;
+    width: 200px; /* Уменьшена ширина */
+    margin: 20px 0 0 50px; /* Уменьшен отступ */
+    box-sizing: border-box;
+}
+
 .rectangle-3 {
     position: relative;
     width: 200px; /* Уменьшена ширина */
@@ -71,17 +82,9 @@ button {
     text-align: left;
     white-space: nowrap;
     z-index: 7;
+    width: 700px;
 }
 
-.rectangle-4 {
-    position: relative;
-    width: 700px; /* Уменьшена ширина */
-    height: 40px; /* Уменьшена высота */
-    margin: 10px 0 0 50px; /* Уменьшен отступ */
-    background: #ffffff;
-    z-index: 6;
-    border-radius: 30px; /* Пропорционально уменьшен радиус */
-}
 
 .description {
     display: block;
