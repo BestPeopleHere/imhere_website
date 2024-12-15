@@ -9,6 +9,8 @@ import EditWindow from "./EditWindow/EditWindow.tsx";
 import ShowEditProfileController from "../../Controller/ShowEditProfileController.tsx";
 import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
 import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
+import SearchButton from "./Elements/SearchButton.tsx";
+import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
 
 
 class Profile extends VisualObject {
@@ -47,8 +49,10 @@ class Profile extends VisualObject {
                 <div className='main-contain'></div>
                 <div className='about-field'></div>
                 <div className='top-menu'></div>
-                <button className="top-search-button">Поиск</button>
+
                 <Element instance={this.editButton} className="top-edit-button"/>
+
+                <Element instance={this.searchButton} className="top-search-button" />
 
                 <button className="top-exit-button">Выйти</button>
 
@@ -93,6 +97,8 @@ class Profile extends VisualObject {
         this.editButton.setActionController(new ShowEditProfileController());
         // this.buttonSetPhoto.setActionController(new SetAvatarController());
 
+        this.searchButton.setActionController(new ToSearchButtonController());
+
         this.getInfProfileController.performe();
     }
 
@@ -104,6 +110,8 @@ class Profile extends VisualObject {
     getInfProfileController:GetInfProfileUser = new GetInfProfileUser();
 
     editWindow: EditWindow=new EditWindow();
+
+    searchButton: SearchButton = new SearchButton();
 
     nickname: string|undefined="none";
     status: string|undefined="none";
