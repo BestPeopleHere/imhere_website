@@ -53,6 +53,36 @@
     border-radius: 50px;
 }
 
+.tags-container {
+    position: absolute;
+    top: 540px;
+    left: 600px;
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+}
+
+.tag-window-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 55px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow: auto; /* Включаем прокрутку */
+}
+
+/* Скрываем полосы прокрутки */
+.tag-window-container::-webkit-scrollbar {
+    display: none; /* Прячем горизонтальную и вертикальную полосы */
+}
+
+
+
 .text-logo{          /* стиль для текста для плашки над фото */
     font-size: 30px;
     top: 90px;

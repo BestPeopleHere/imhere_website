@@ -11,6 +11,13 @@ import GetInfProfileUser from "../../Controller/GetInfProfileUser.tsx";
 import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
 import SearchButton from "./Elements/SearchButton.tsx";
 import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
+import TagWindow from "./Elements/TagWindow.tsx";
+import AddTagButton from "./Elements/AddTagButton.tsx";
+import GetUsersTagsForEditController from "../../Controller/GetUsersTagsForEditController.tsx";
+import GetTagsController from "../../Controller/GetTagsController.tsx";
+import TagDTO from "../../Controller/DTO/TagDTO.tsx";
+import Tag from "./Elements/Tag.tsx";
+import SetAvatarController from "../../Controller/SetAvatarController.tsx";
 
 
 class Profile extends VisualObject {
@@ -35,6 +42,33 @@ class Profile extends VisualObject {
     render() {
         return (
             <div className='main-container'>
+
+                {this.isTagWindowVisible && (
+                    <div className='overlay' onClick={this.hideTagWindow}/>
+                )}
+                {this.isTagWindowVisible && (
+                    <Element
+                        instance={this.editTags}
+                        className="tag-window-container"
+                    />
+                )}
+
+                <div className="tags-container">
+                    {this.tags?.map((tag: TagDTO) => (
+                        <Element
+                            key={tag.id}
+                            instance={new Tag(tag.tag_name)}
+                            className="tag"
+                        />
+                    ))}
+                    {/*<button*/}
+                    {/*    className="add-tag-button"*/}
+                    {/*    onClick={this.showTagWindow}>*/}
+                    {/*    +*/}
+                    {/*</button>*/}
+                </div>
+
+
                 {/* Темный фон с полупрозрачностью, если окно активно */}
                 {this.isShowEditWindow && <div className='overlay' onClick={this.hideEditWindow}/>}
 
@@ -52,12 +86,15 @@ class Profile extends VisualObject {
 
                 <Element instance={this.editButton} className="top-edit-button"/>
 
-                <Element instance={this.searchButton} className="top-search-button" />
+                <Element instance={this.searchButton} className="top-search-button"/>
 
                 <button className="top-exit-button">Выйти</button>
 
                 <button className="add-project-button"></button>
-                <button className="add-tag-button"></button>
+                {/*<button className="add-tag-button"></button>*/}
+                <Element instance={this.addTagButton}/>
+
+
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
 
@@ -76,8 +113,7 @@ class Profile extends VisualObject {
         );
     }
 
-    updateInf(userProfile: UserProfileDTO|null)
-    {
+    updateInf(userProfile: UserProfileDTO | null) {
 
 
         this.nickname = userProfile?.nickname;
@@ -88,7 +124,7 @@ class Profile extends VisualObject {
         this.link_to_avatar = userProfile?.link_to_avatar;
 
         this.avatar.avatarUrl = userProfile?.link_to_avatar;
-        console.log("link: ",userProfile?.link_to_avatar,"description: ", userProfile?.description);
+        console.log("link: ", userProfile?.link_to_avatar, "description: ", userProfile?.description);
 
         this.forceUpdate();
     }
@@ -97,10 +133,28 @@ class Profile extends VisualObject {
         this.editButton.setActionController(new ShowEditProfileController());
         // this.buttonSetPhoto.setActionController(new SetAvatarController());
 
+        this.buttonSetPhoto.setActionController(new SetAvatarController());
+
         this.searchButton.setActionController(new ToSearchButtonController());
+        this.addTagButton.setActionController(new GetUsersTagsForEditController());
+
+        const getTags:GetTagsController=new GetTagsController();
+        getTags.performe();
 
         this.getInfProfileController.performe();
     }
+
+    showTagWindow = () => {
+        console.log("Клик по кнопке +");
+        this.isTagWindowVisible = true;
+        this.forceUpdate();
+    };
+
+    hideTagWindow = () => {
+        this.isTagWindowVisible = false; // Скрываем окно
+        this.forceUpdate(); // Обновляем интерфейс
+    };
+
 
     editButton: EditButton;
     button: Button = new Button();
@@ -110,6 +164,10 @@ class Profile extends VisualObject {
     getInfProfileController:GetInfProfileUser = new GetInfProfileUser();
 
     editWindow: EditWindow=new EditWindow();
+    editTags: TagWindow=new TagWindow();
+    addTagButton: AddTagButton = new AddTagButton();
+
+    tags: TagDTO[]|null=[];
 
     searchButton: SearchButton = new SearchButton();
 
@@ -119,6 +177,8 @@ class Profile extends VisualObject {
     birthday: string|undefined="none";
     sex: string|undefined="none";
     link_to_avatar: string|undefined="none";
+
+    isTagWindowVisible: boolean = false;
 }
 
 export default Profile;

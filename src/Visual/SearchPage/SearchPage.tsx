@@ -15,6 +15,10 @@ import PeopleCards from "./PeopleCards/PeopleCards.tsx";
 import Request from "./Elements/Request.tsx";
 import UserCard from "./UserCard/UserCard.tsx";
 import SearchController from "../../Controller/Search/SearchController.tsx";
+import AddTagsButton from "./Elements/AddTagsButton.tsx";
+import ShowTagWindowOnSearch from "../../Controller/Search/ShowTagWindowOnSearch.tsx";
+import TagWindow from "../Profile/Elements/TagWindow.tsx";
+import TagWindow2 from "../Profile/Elements/TagWindow2.tsx";
 
 
 
@@ -49,6 +53,18 @@ class SearchPage extends VisualObject {
         return (
 
             <div className="main-container">
+
+                {this.isTagWindowVisible && (
+                    <div className='overlay' onClick={this.hideTagWindow}/>
+                )}
+                {this.isTagWindowVisible && (
+                    <Element
+                        instance={this.editTags}
+                        className="tag-window-container"
+                    />
+                )}
+
+
                 <div className="scroll-container">
                     <div className="search-imhere-logo">ImHere</div>
                     <div className="search-field">
@@ -63,6 +79,7 @@ class SearchPage extends VisualObject {
                     <Element instance={this.backButton} className="back-button"/>
                     <Element instance={this.resultButton} className="result-button"/>
                     <Element instance={this.filterButton} className="filter-button"/>
+
                 </div>
             </div>
         );
@@ -77,6 +94,17 @@ class SearchPage extends VisualObject {
 
     }
 
+    showTagWindow = () => {
+        console.log("Клик по кнопке +");
+        this.isTagWindowVisible = true;
+        this.forceUpdate();
+    };
+
+    hideTagWindow = () => {
+        this.isTagWindowVisible = false; // Скрываем окно
+        this.forceUpdate(); // Обновляем интерфейс
+    };
+
     peopleButton: PeopleButton;
     projectButton: ProjectButton;
     backButton: BackButton;
@@ -86,6 +114,8 @@ class SearchPage extends VisualObject {
     isShowPeopleCards: boolean = false;
     peopleCards: PeopleCards = new PeopleCards();
 
+    isTagWindowVisible: boolean = false;
+    editTags: TagWindow2=new TagWindow2();
 
 
 }

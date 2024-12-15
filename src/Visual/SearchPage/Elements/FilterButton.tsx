@@ -4,6 +4,14 @@ import '../SearchPage.css';
 import FilterSearchButtonController from "../../../Controller/FilterSearchButtonController.tsx";
 
 import TagSearch from "./TagSearch";
+import Element from "../../ItcHyFeeL/Element.tsx";
+import AddTagsButton from "./AddTagsButton.tsx";
+import PeopleSearchController from "../../../Controller/PeopleSearchController.tsx";
+import ProjectSearchController from "../../../Controller/ProjectSearchController.tsx";
+import BackSearchButtonController from "../../../Controller/BackSearchButtonController.tsx";
+import SearchController from "../../../Controller/Search/SearchController.tsx";
+import ShowTagWindowOnSearch from "../../../Controller/Search/ShowTagWindowOnSearch.tsx";
+import showTagWindowOnSearch from "../../../Controller/Search/ShowTagWindowOnSearch.tsx";
 
 class FilterButton extends Button {
     private tagSearch: TagSearch;
@@ -18,6 +26,9 @@ class FilterButton extends Button {
             <div>
                 <span id={this.id} className="filter-button"></span>
                 <div id={`${this.id}-tag-frame`} className="tag-frame hidden"></div>
+
+                {/*<Element instance={this.addTagsButton} className="hidden"/>*/}
+
                 <button id={`${this.id}-tag-search-button`} className="tag-search-button hidden"></button>
                 {this.tagSearch.render()}
             </div>
@@ -26,6 +37,7 @@ class FilterButton extends Button {
 
     readyToBeRendered() {
         this.tagSearch.attachEvents(); // Привязываем события к элементам окна
+        this.addTagsButton.setActionController(new ShowTagWindowOnSearch());
     }
 
     public setActionController(controller: FilterSearchButtonController) {
@@ -47,10 +59,19 @@ class FilterButton extends Button {
             controller.performe();
         });
 
-        $(`#${this.id}-tag-search-button`).off().on('click', () => {
-            this.tagSearch.toggle(); // Показываем/скрываем окно TagSearch
+        $(`#${this.id}-tag-search-button`).off().on('click', () =>
+        {
+            const showTagWindowOnSearch:ShowTagWindowOnSearch= new ShowTagWindowOnSearch();
+
+            showTagWindowOnSearch.performe();
+
+          //  this.tagSearch.toggle(); // Показываем/скрываем окно TagSearch
         });
     }
+
+
+    addTagsButton: AddTagsButton= new AddTagsButton();
+
 }
 
 export default FilterButton;

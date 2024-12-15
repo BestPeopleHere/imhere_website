@@ -4,9 +4,9 @@ import Element from "../../ItcHyFeeL/Element";
 import Button from "../../ItcHyFeeL/DoneElements/Button";
 import TagDTO from "../../../Controller/DTO/TagDTO.tsx";
 import TagCategory from "../../../Controller/DTO/TagCategory.tsx";
-import SaveTagsController from "../../../Controller/SaveTagsController.tsx";
+import SaveTagsToSearchController from "../../../Controller/Search/SaveTagsToSearchController.tsx";
 
-class TagWindow extends VisualObject {
+class TagWindow2 extends VisualObject {
     constructor() {
         super();
         this.saveButton = new Button();
@@ -40,13 +40,11 @@ class TagWindow extends VisualObject {
 
     readyToBeRendered() {
         this.saveButton.setText('Сохранить');
-        this.saveButton.setActionController(new SaveTagsController());
+        this.saveButton.setActionController(new SaveTagsToSearchController());
         //     console.log("Теги сохранены!", this.state.selectedTags);
         //     this.hideTagWndow();
         // });
     }
-
-
     render() {
         return (
             <div className={styles['main-container']}>
@@ -154,4 +152,4 @@ class TagWindow extends VisualObject {
     showCategories: { [key: number]: boolean } = {};
 }
 
-export default TagWindow;
+export default TagWindow2;

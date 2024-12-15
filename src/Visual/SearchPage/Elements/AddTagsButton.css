@@ -1,0 +1,11 @@
+.tag-search-button{
+    position: absolute;
+    top: 665px;
+    left: 1510px;
+    width: 61px;
+    height: 41px;
+    background:url(../../../assets/images/plus.png) no-repeat center, #ffffff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
