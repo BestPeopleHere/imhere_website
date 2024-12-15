@@ -5,22 +5,6 @@
     "Source Han Sans CN", sans-serif;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-}
-
-.fullscreen-div {
-    overflow: auto;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-}
-
 .main-container {
     overflow: hidden;
 }
@@ -48,11 +32,11 @@ button {
     }
 }
 
-.main-container-3 {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
+.main-container {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
     background:
             radial-gradient(circle at 20% 0%, rgba(165, 88, 215, 0.7), transparent 40%),
             radial-gradient(circle at 100% 100%, rgba(209, 76, 123, 0.7), transparent 50%),
@@ -61,6 +45,13 @@ button {
     background-size: 200% 200%;
     animation: gradientFlow 8s ease infinite;
     overflow: hidden;
+}
+
+.login-container {
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Distribute space evenly between items */
+    align-items: center; /* Vertically center items */
+    width: 300px; /* Adjust width as needed */
 }
 
 
@@ -82,7 +73,7 @@ button {
     z-index: 1;
 }
 
-.Button-3 {
+.email-input-space {
     position: absolute;
     top: 456px;
     left: 50%;
@@ -106,6 +97,7 @@ button {
     text-align: left;
     white-space: nowrap;
 }
+
 .pic {
     position: absolute;
     width: 70px;
@@ -117,6 +109,7 @@ button {
     background-size: cover;
     z-index: 7;
 }
+
 .pic-2 {
     position: relative;
     width: 42px;
@@ -143,7 +136,7 @@ button {
 /*    border-radius: 50%;*/
 /*}*/
 
-.rectangle-3 {
+.password-input-space {
     position: absolute;
     top: 542px;
     left: 50%;

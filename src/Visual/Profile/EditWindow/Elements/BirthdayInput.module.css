@@ -1,0 +1,21 @@
+.example-container {
+    position: relative;
+    width: 100%; /* Занимает всю ширину родительского контейнера */
+}
+
+.example-input {
+    width: 100%; /* Занимает всю ширину контейнера */
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Цвет рамки */
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 16px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    background-color: #fff; /* Цвет фона */
+    box-sizing: border-box; /* Учитываем границы и отступы в ширину */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+.example-input:focus {
+    border-color: #d14c7b; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
