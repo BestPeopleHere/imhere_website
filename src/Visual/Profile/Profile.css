@@ -60,6 +60,7 @@
     display: flex;
     gap: 10px;
     overflow: auto;
+    font-family: Inter, var(--default-font-family);
 }
 
 .tag-window-container {
