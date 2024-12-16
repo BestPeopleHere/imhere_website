@@ -12,7 +12,7 @@ class Visual {
 
         createRoot(document.getElementById('root') as HTMLElement).render(
             <StrictMode>
-                Привет, очаровашачка
+                {/*Привет, очаровашачка*/}
                 <ElementWithoutRouter instance={this.appVisual} />
             </StrictMode>
         );

@@ -10,14 +10,12 @@ import ResultButton from "./Elements/ResultButton.tsx";
 import FilterButton from "./Elements/FilterButton.tsx";
 import FilterSearchButtonController from "../../Controller/FilterSearchButtonController.tsx";
 import BackSearchButtonController from "../../Controller/BackSearchButtonController.tsx";
-import ShowResultSearchButtonController from "../../Controller/ShowResultSearchButtonController.tsx";
+
 import PeopleCards from "./PeopleCards/PeopleCards.tsx";
 import Request from "./Elements/Request.tsx";
-import UserCard from "./UserCard/UserCard.tsx";
+
 import SearchController from "../../Controller/Search/SearchController.tsx";
-import AddTagsButton from "./Elements/AddTagsButton.tsx";
-import ShowTagWindowOnSearch from "../../Controller/Search/ShowTagWindowOnSearch.tsx";
-import TagWindow from "../Profile/Elements/TagWindow.tsx";
+
 import TagWindow2 from "../Profile/Elements/TagWindow2.tsx";
 import TagDTO from "../../Controller/DTO/TagDTO.tsx";
 import Tag from "../Profile/Elements/Tag.tsx";

@@ -58,20 +58,20 @@ class OtherProfile extends VisualObject {
 
             <div className='main-container'>
 
-                <div className="tags-container">
-                    {this.tags?.map((tag: TagDTO) => (
-                        <Element
-                            key={tag.id}
-                            instance={new Tag(tag.tag_name)}
-                            className="tag"
-                        />
-                    ))}
-                    {/*<button*/}
-                    {/*    className="add-tag-button"*/}
-                    {/*    onClick={this.showTagWindow}>*/}
-                    {/*    +*/}
-                    {/*</button>*/}
-                </div>
+                {/*<div className="tags-container">*/}
+                {/*    {this.tags?.map((tag: TagDTO) => (*/}
+                {/*        <Element*/}
+                {/*            key={tag.id}*/}
+                {/*            instance={new Tag(tag.tag_name)}*/}
+                {/*            className="tag"*/}
+                {/*        />*/}
+                {/*    ))}*/}
+                {/*    /!*<button*!/*/}
+                {/*    /!*    className="add-tag-button"*!/*/}
+                {/*    /!*    onClick={this.showTagWindow}>*!/*/}
+                {/*    /!*    +*!/*/}
+                {/*    /!*</button>*!/*/}
+                {/*</div>*/}
 
 
                 <Element instance={this.avatar}/>
@@ -79,12 +79,19 @@ class OtherProfile extends VisualObject {
                 <div className='main-contain'></div>
                 <div className='about-field'></div>
                 <div className='top-menu'></div>
-                <Element instance={this.searchButton} className="top-search-button" />
+                <Element instance={this.searchButton} className="top-search-button"/>
 
 
+                <div className="tags-container">
+                    {this.tags?.map((tag, index) => (
+                        <Element
+                            key={index} // Уникальный ключ для каждого тега
+                            instance={new Tag(tag.tag_name)}
+                        />
+                    ))}
+                </div>
 
                 {/*<button className="add-tag-button"></button>*/}
-
 
 
                 {/*<button*/}
@@ -110,11 +117,11 @@ class OtherProfile extends VisualObject {
         );
     }
 
-    updateInf(userProfile: UserProfileDTO|null) {
+    updateInf(userProfile: UserProfileDTO | null) {
 
-        console.log("other cool id: "+this.getLastPathSegment());
+        console.log("other cool id: " + this.getLastPathSegment());
 
-        this.userProfile=userProfile;
+        this.userProfile = userProfile;
         //
         // this.nickname = nickname;
         // this.status = status;
@@ -123,7 +130,7 @@ class OtherProfile extends VisualObject {
         // this.sex=sex;
         // this.link_to_avatar = link_to_avatar;
         //
-         this.avatar.avatarUrl=userProfile?.link_to_avatar;
+        this.avatar.avatarUrl = userProfile?.link_to_avatar;
         // console.log("link: ",link_to_avatar);
 
         this.forceUpdate();

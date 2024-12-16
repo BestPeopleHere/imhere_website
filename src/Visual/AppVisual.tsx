@@ -13,8 +13,6 @@ import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
 import Example from "./Example/Example.tsx";
 import ToSauna from "../Controller/ToSauna.tsx";
 import OtherProfile from "./Profile/OtherProfile.tsx";
-import TagWindow from "./Profile/Elements/TagWindow.tsx";
-import TagDTO from "../Controller/DTO/TagDTO.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -28,7 +26,7 @@ class AppVisual extends VisualObject {
         return (
             <Router>
 
-                <Element instance={this.button}/>
+                {/*<Element instance={this.button}/>*/}
                 {/*<Element instance={new Button()}/>*/}
 
                 <Routes>

@@ -1,17 +1,12 @@
 import './UserCard.css';
-import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import Element from "../../ItcHyFeeL/Element.tsx";
 import UserCardAvatar from "./CardElements/UserCardAvatar.tsx";
-import $ from "jquery";
 import UserCardStatus from "./CardElements/UserCardStatus.tsx";
-import UserCardTag from "./CardElements/UserCardTag.tsx";
-import GetInfProfileUser from "../../../Controller/GetInfProfileUser.tsx";
 import UserFoundDTO from "../../../Controller/DTO/UserFoundDTO.tsx";
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import ToOtherProfileController from "../../../Controller/Search/ToOtherProfileController.tsx";
 
 class UserCard extends VisualObject {
-    private tags: { tag_name: string; id: number }[];
 
     constructor(userFound:UserFoundDTO) {
         super();
@@ -42,7 +37,7 @@ class UserCard extends VisualObject {
     }
 
     render() {
-        console.log(this.tags); // проверяем, что данные корректны
+ // проверяем, что данные корректны
         return (
             <div className="main-container-8" onClick={() => this.handleCardClick()}>
                 <div className='rectangle-8'/>
