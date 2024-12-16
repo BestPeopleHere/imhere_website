@@ -44,7 +44,7 @@ class AuthReg extends VisualObject {
                 </div>
                 <Element instance={this.createButton} className='create-account'/>
 
-                <Element instance={this.button}/>
+                {/*<Element instance={this.button}/>*/}
 
                 <Element instance={this.error}/>
 
