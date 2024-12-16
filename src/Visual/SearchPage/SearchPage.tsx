@@ -78,19 +78,23 @@ class SearchPage extends VisualObject {
                     />
                 )}
 
-                {this.isFilter && (
-                    <div className="tags-container-111">
-                        {this.tags.map((tag, index) => (
-                            <Element
-                                key={index} // Уникальный ключ для каждого тега
-                                instance={new Tag(tag.tag_name)}
-                            />
-                        ))}
-                    </div>
-                )}
 
 
                 <div className="scroll-container">
+
+
+
+                    {this.isFilter && (
+                        <div className="tags-container-111">
+                            {this.tags.map((tag, index) => (
+                                <Element
+                                    key={index} // Уникальный ключ для каждого тега
+                                    instance={new Tag(tag.tag_name)}
+                                />
+                            ))}
+                        </div>
+                    )}
+
                     <div className="search-imhere-logo">ImHere</div>
                     <div className="search-field">
                         <Element instance={this.request} className="search-field"/>

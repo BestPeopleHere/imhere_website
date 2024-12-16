@@ -13,11 +13,6 @@ class SaveTagsToSearchController extends Controller  {
         }
 
         Data.visual.appVisual?.search.hideTagWindow();
-
-
-
-
-
     }
 }
 
