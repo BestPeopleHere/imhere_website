@@ -22,6 +22,8 @@ class EditWindow extends VisualObject {
         this.about = new About();
         this.save = new SaveButton();
         this.exit = new ExitButton();
+
+
     }
 
     render() {
@@ -53,6 +55,9 @@ class EditWindow extends VisualObject {
 
                 this.save.setActionController(new EditProfileController());
 
+                    this.nicknameInput.setMax(256);
+                    this.status.setMax(1024);
+                    this.about.setMax(4096);
             }
 
     nicknameInput: Input;

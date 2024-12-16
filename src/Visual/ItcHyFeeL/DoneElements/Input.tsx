@@ -13,6 +13,7 @@ class Input extends DoneElement {
                 <input
                     id={this.id}
                     placeholder={this.placeholder}
+                    maxLength={this.max}
                 />
             </div>
         );
@@ -43,9 +44,17 @@ class Input extends DoneElement {
         this.forceUpdate();
     }
 
+
+    public setMax(max:number)
+    {
+        this.max=max;
+    }
+
     protected placeholder: string = 'Ввод';
     protected controller: Controller|null = null;
     protected value: string='';
+
+    public max:number = 100000;
 }
 
 export default Input;
