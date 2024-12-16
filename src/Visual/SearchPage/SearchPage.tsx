@@ -67,7 +67,7 @@ class SearchPage extends VisualObject {
                 )}
 
 
-                <div className="tags-container">
+                <div className="tags-container-111">
                     {this.tags.map((tag, index) => (
                         <Element
                             key={index} // Уникальный ключ для каждого тега

@@ -50,8 +50,9 @@
     color: #ffffff;
     font-family: Inter, var(--default-font-family);
 }
+
 .search-field {  /* поле для поиска */
-    top: 50%;
+    top: 455px;
     left: 305px;
     transform: translateY(-50%);
     position: absolute;
@@ -61,6 +62,7 @@
     background: #ffffff;
     border-radius: 50px;
 }
+
 .search-field input {
     padding-top: 22px;
     padding-left: 20px;
@@ -71,7 +73,7 @@
 
 .filter-button { /*кнопка фильтра */
     position: absolute;
-    top: 50%;
+    top: 455px;
     left: 1440px;
     transform: translateY(-50%);
     width: 75px;
@@ -83,7 +85,7 @@
 
 .result-button {   /*кнопка результата */
     position: absolute;
-    top: 50%;
+    top: 455px;
     left: 1540px;
     transform: translateY(-50%);
     width: 75px;
@@ -138,39 +140,36 @@
 
 }
 
-.tag-frame {
-    top: 620px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    width: 1311px;
-    height: 135px;
-    border: 3px solid #cbee4c;
-    border-radius: 60px;
-
-}
 
 .hidden {
     display: none;
 }
 
-
-
-.tags-container {
-    display: flex;
+.tags-container-111 {
+    top: 620px; /* Позиционирование по вертикали */
+    left: 920px; /* Позиционирование по горизонтали */
+    display: flex; /* Используем Flexbox */
     flex-wrap: wrap; /* Позволяет переносить теги на следующую строку */
     gap: 10px; /* Расстояние между тегами */
-    margin-top: 20px;
+    margin-top: 50px; /* Отступ сверху */
+    margin-left: -600px; /* Отрицательный отступ слева (можно пересмотреть) */
+    width: 1311px; /* Ширина контейнера */
+    border: 3px solid #cbee4c; /* Граница */
+    border-radius: 60px; /* Скругление углов */
+    padding: 20px; /* Отступы внутри контейнера */
+    box-sizing: border-box; /* Учитываем отступы в ширине и высоте */
+    position: absolute; /* Позиционирование относительно родителя */
+    font-family: Inter, var(--default-font-family);
 }
 
 .tag {
-    padding: 8px 12px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    padding: 8px 12px; /* Отступы для тегов */
+    background-color: #f0f0f0; /* Фон тегов */
+    border-radius: 20px; /* Скругление углов тегов */
+    font-size: 14px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.2s ease; /* Плавный переход фона */
 }
 
 .tag:hover {
@@ -178,13 +177,9 @@
     color: white;
 }
 
-
-
-
-
 .tag-search-button{
     position: absolute;
-    top: 665px;
+    top: 300px;
     left: 1510px;
     width: 61px;
     height: 41px;
@@ -198,9 +193,13 @@
 }
 
 .people-search-button, .project-search-button {
+    position: absolute;
+    top: 350px;
+    left: 310px;
     background: #ffffff; /* Сброс фонового цвета для неактивной кнопки */
 
 }
+
 .tag-popup {
     position: relative;
     width: 600px;
@@ -250,11 +249,6 @@
 /*    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); !* Легкая тень *!*/
 /*    box-sizing: border-box; !* Учитываем padding *!*/
 /*}*/
-
-
-
-
-
 
 
 
