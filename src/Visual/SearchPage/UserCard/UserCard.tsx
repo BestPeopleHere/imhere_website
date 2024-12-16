@@ -50,10 +50,10 @@ class UserCard extends VisualObject {
                 <span className='nickname-user-card'>{this.nickname}</span>
                 <span className='status-user-card'>{this.description}</span>
 
-                <div>
+                <div className="tags-container-12">
                     {this.tags?.map((tag, index) => (
                         <Element
-                            key={index} // Уникальный ключ для каждого тега
+                            key={index}
                             instance={new Tag(tag.tag_name)}
                         />
                     ))}
