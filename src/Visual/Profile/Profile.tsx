@@ -53,20 +53,30 @@ class Profile extends VisualObject {
                     />
                 )}
 
+
                 <div className="tags-container">
-                    {this.tags?.map((tag: TagDTO) => (
+                    {this.tags?.map((tag, index) => (
                         <Element
-                            key={tag.id}
+                            key={index} // Уникальный ключ для каждого тега
                             instance={new Tag(tag.tag_name)}
-                            className="tag"
                         />
                     ))}
-                    {/*<button*/}
-                    {/*    className="add-tag-button"*/}
-                    {/*    onClick={this.showTagWindow}>*/}
-                    {/*    +*/}
-                    {/*</button>*/}
                 </div>
+
+                {/*<div className="tags-container">*/}
+                {/*    {this.tags?.map((tag: TagDTO) => (*/}
+                {/*        <Element*/}
+                {/*            key={tag.id}*/}
+                {/*            instance={new Tag(tag.tag_name)}*/}
+                {/*            className="tag"*/}
+                {/*        />*/}
+                {/*    ))}*/}
+                {/*    /!*<button*!/*/}
+                {/*    /!*    className="add-tag-button"*!/*/}
+                {/*    /!*    onClick={this.showTagWindow}>*!/*/}
+                {/*    /!*    +*!/*/}
+                {/*    /!*</button>*!/*/}
+                {/*</div>*/}
 
 
                 {/* Темный фон с полупрозрачностью, если окно активно */}
@@ -87,7 +97,6 @@ class Profile extends VisualObject {
                 <Element instance={this.editButton} className="top-edit-button"/>
 
                 <Element instance={this.searchButton} className="top-search-button"/>
-
 
 
                 <button className="add-project-button"></button>
@@ -153,6 +162,7 @@ class Profile extends VisualObject {
     hideTagWindow = () => {
         this.isTagWindowVisible = false; // Скрываем окно
         this.forceUpdate(); // Обновляем интерфейс
+        this.update();
     };
 
 
