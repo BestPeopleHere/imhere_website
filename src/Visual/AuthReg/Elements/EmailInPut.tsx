@@ -16,6 +16,7 @@ class EmailInput extends Input {
                         className="example-input-1"
                         id={this.id}
                         placeholder={this.placeholder}
+                        maxLength={128}
                     />
                 </div>
             </div>
