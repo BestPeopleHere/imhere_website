@@ -26,9 +26,9 @@ class NameInput extends Input {
                         paddingLeft: '36px',
                         fontWeight: 'normal'
                     }}
-                    onInput={(event) => {
-                        this.value = event.target.value;
-                    }}
+                    // onInput={(event) => {
+                    //     this.value = event.target.value;
+                    // }}
                 />
             </div>
         );
