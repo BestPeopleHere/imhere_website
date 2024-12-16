@@ -1,8 +1,8 @@
 
 .add-tag-button{                     /* кнопка добавить тэг*/
     position: absolute;
-    top: 540px;
-    left: 1800px;
+    top: 478px;
+    left: 630px;
     width: 61px;
     height: 41px;
     background:url(../../../assets/images/plus.png) no-repeat center, #ffffff;
