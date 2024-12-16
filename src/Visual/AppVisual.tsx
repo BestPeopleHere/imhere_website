@@ -13,6 +13,8 @@ import EditWindow from "./Profile/EditWindow/EditWindow.tsx";
 import Example from "./Example/Example.tsx";
 import ToSauna from "../Controller/ToSauna.tsx";
 import OtherProfile from "./Profile/OtherProfile.tsx";
+import TagWindow from "./Profile/Elements/TagWindow.tsx";
+import TagDTO from "../Controller/DTO/TagDTO.tsx";
 
 class AppVisual extends VisualObject {
     constructor() {
@@ -92,6 +94,8 @@ class AppVisual extends VisualObject {
     public editWindow: EditWindow=new EditWindow();
     public search: SearchPage=new SearchPage();
     public otherProfile: OtherProfile=new OtherProfile();
+
+
 
 
     //  navigate: NavigateFunction = useNavigate();

@@ -12,11 +12,11 @@ class ShowTagWindowOnSearch extends Controller  {
         //fdfsfd
 
 
-        Data.visual.appVisual?.search.editTags.setAllTags(data,null);
+        Data.visual.appVisual?.search.editTags.setAllTags(data);
 
 
         Data.visual.appVisual?.search.showTagWindow();
-        Data.visual.appVisual?.search.editTags.setSearch();
+
 
 
     }

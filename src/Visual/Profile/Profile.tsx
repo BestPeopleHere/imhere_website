@@ -88,7 +88,7 @@ class Profile extends VisualObject {
 
                 <Element instance={this.searchButton} className="top-search-button"/>
 
-                <button className="top-exit-button">Выйти</button>
+
 
                 <button className="add-project-button"></button>
                 {/*<button className="add-tag-button"></button>*/}

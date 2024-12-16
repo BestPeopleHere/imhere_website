@@ -25,6 +25,8 @@ class TagWindow2 extends VisualObject {
 
     handleTagSelection(tag: TagDTO) {
 
+        console.log("click");
+
         this.selectedTags?.push(tag);
 
         this.forceUpdate();
@@ -86,7 +88,7 @@ class TagWindow2 extends VisualObject {
                                             !this.selectedTags?.some((selected: TagDTO) => selected.id === tag.id ) // Исключаем выбранные теги
                                         ).map((tag: TagDTO) => (
                                             <button
-                                                key={`available-${tag}`}
+                                                key={`available-${tag.id}`}
                                                 className={`${styles['tag-option']}`}
                                                 onClick={() => this.handleTagSelection(tag)}
                                             >
@@ -108,10 +110,10 @@ class TagWindow2 extends VisualObject {
         );
     }
 
-    setAllTags(tags: TagDTO[]|null,userTags: TagDTO[]|null|undefined) {
+    setAllTags(tags: TagDTO[]|null) {
 
         this.tags=tags;
-        this.selectedTags = userTags ? [...userTags] : null;
+        this.selectedTags=this.saveTags;
         this.categories=this.getUniqueCategories(tags);
 
         //console.log(categories);
@@ -142,12 +144,17 @@ class TagWindow2 extends VisualObject {
     }
 
 
+    saveSelectedTags()
+    {
+        this.saveTags=this.selectedTags;
+    }
 
 
 
     saveButton: Button;
     tags:TagDTO[]|null=null;
-    selectedTags: TagDTO[]|null|undefined;
+    selectedTags: TagDTO[]=[];
+    saveTags:TagDTO[]=[];
     categories:TagCategory[]|null=null;
     showCategories: { [key: number]: boolean } = {};
 }

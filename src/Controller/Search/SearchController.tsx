@@ -6,10 +6,14 @@ class SearchController extends Controller {
     async performe(): Promise<void> {
         console.log("SearchController");
 
-        const userFound: UserFoundDTO[] = await Data.bc.searchUsers(null,null);
+
 
 
         if (Data.visual?.appVisual?.search?.peopleCards) {
+
+            console.log("search by: ", Data.visual.appVisual.search.request.getValue(),Data.visual.appVisual.search.tags )
+
+            const userFound: UserFoundDTO[] = await Data.bc.searchUsers(Data.visual.appVisual.search.request.getValue(),Data.visual.appVisual.search.tags);
             Data.visual.appVisual.search.peopleCards.userFound = userFound;
         }
 

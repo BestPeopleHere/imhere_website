@@ -88,7 +88,7 @@ class TagWindow extends VisualObject {
                                             !this.selectedTags?.some((selected: TagDTO) => selected.id === tag.id ) // Исключаем выбранные теги
                                         ).map((tag: TagDTO) => (
                                             <button
-                                                key={`available-${tag}`}
+                                                key={`available-${tag.id}`}
                                                 className={`${styles['tag-option']}`}
                                                 onClick={() => this.handleTagSelection(tag)}
                                             >

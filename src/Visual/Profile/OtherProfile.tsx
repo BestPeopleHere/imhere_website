@@ -81,7 +81,7 @@ class OtherProfile extends VisualObject {
                 <div className='top-menu'></div>
                 <Element instance={this.searchButton} className="top-search-button" />
 
-                <button className="top-exit-button">Выйти</button>
+
 
                 {/*<button className="add-tag-button"></button>*/}
 

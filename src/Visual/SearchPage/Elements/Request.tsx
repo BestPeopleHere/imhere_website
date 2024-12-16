@@ -9,7 +9,7 @@ class Request extends Input {
     render() {
         return (
                 <div>
-                    <input type="text" placeholder="Что для тебя найти?"/>
+                    <input id={this.id} type="text" placeholder="Что для тебя найти?"/>
                 </div>
         );
     }

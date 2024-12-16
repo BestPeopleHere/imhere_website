@@ -19,6 +19,8 @@ import AddTagsButton from "./Elements/AddTagsButton.tsx";
 import ShowTagWindowOnSearch from "../../Controller/Search/ShowTagWindowOnSearch.tsx";
 import TagWindow from "../Profile/Elements/TagWindow.tsx";
 import TagWindow2 from "../Profile/Elements/TagWindow2.tsx";
+import TagDTO from "../../Controller/DTO/TagDTO.tsx";
+import Tag from "../Profile/Elements/Tag.tsx";
 
 
 
@@ -63,6 +65,16 @@ class SearchPage extends VisualObject {
                         className="tag-window-container"
                     />
                 )}
+
+
+                <div className="tags-container">
+                    {this.tags.map((tag, index) => (
+                        <Element
+                            key={index} // Уникальный ключ для каждого тега
+                            instance={new Tag(tag.tag_name)}
+                        />
+                    ))}
+                </div>
 
 
                 <div className="scroll-container">
@@ -117,7 +129,7 @@ class SearchPage extends VisualObject {
     isTagWindowVisible: boolean = false;
     editTags: TagWindow2=new TagWindow2();
 
-
+    public tags: TagDTO[]=[];
 }
 
 
