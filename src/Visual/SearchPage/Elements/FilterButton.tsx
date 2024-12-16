@@ -27,6 +27,8 @@ class FilterButton extends Button {
                 <span id={this.id} className="filter-button"></span>
                 <div id={`${this.id}-tag-frame`} className="tag-frame hidden"></div>
 
+
+
                 {/*<Element instance={this.addTagsButton} className="hidden"/>*/}
 
                 <button id={`${this.id}-tag-search-button`} className="tag-search-button hidden"></button>

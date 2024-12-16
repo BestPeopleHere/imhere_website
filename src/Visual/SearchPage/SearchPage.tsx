@@ -51,6 +51,18 @@ class SearchPage extends VisualObject {
         this.forceUpdate();
     }
 
+    showFilter = () => {
+        this.isFilter=!this.isFilter;
+
+        this.forceUpdate();
+    }
+
+    hideFilter = () => {
+        this.isFilter=false;
+
+        this.forceUpdate();
+    }
+
     render() {
         return (
 
@@ -66,15 +78,16 @@ class SearchPage extends VisualObject {
                     />
                 )}
 
-
-                <div className="tags-container-111">
-                    {this.tags.map((tag, index) => (
-                        <Element
-                            key={index} // Уникальный ключ для каждого тега
-                            instance={new Tag(tag.tag_name)}
-                        />
-                    ))}
-                </div>
+                {this.isFilter && (
+                    <div className="tags-container-111">
+                        {this.tags.map((tag, index) => (
+                            <Element
+                                key={index} // Уникальный ключ для каждого тега
+                                instance={new Tag(tag.tag_name)}
+                            />
+                        ))}
+                    </div>
+                )}
 
 
                 <div className="scroll-container">
@@ -127,6 +140,8 @@ class SearchPage extends VisualObject {
     peopleCards: PeopleCards = new PeopleCards();
 
     isTagWindowVisible: boolean = false;
+    isFilter: boolean = false;
+
     editTags: TagWindow2=new TagWindow2();
 
     public tags: TagDTO[]=[];
