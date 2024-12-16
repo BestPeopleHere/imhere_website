@@ -5,6 +5,8 @@ import UserCardStatus from "./CardElements/UserCardStatus.tsx";
 import UserFoundDTO from "../../../Controller/DTO/UserFoundDTO.tsx";
 import VisualObject from "../../ItcHyFeeL/VisualObject.tsx";
 import ToOtherProfileController from "../../../Controller/Search/ToOtherProfileController.tsx";
+import Tag from "../../Profile/Elements/Tag.tsx";
+import TagDTO from "../../../Controller/DTO/TagDTO.tsx";
 
 class UserCard extends VisualObject {
 
@@ -24,6 +26,8 @@ class UserCard extends VisualObject {
         this.id = userFound.id;
         this.description=userFound.description;
         this.nickname=userFound.nickname;
+
+        this.tags = this.getRandomElements(userFound.tags, 5);
 
     }
 
@@ -46,6 +50,15 @@ class UserCard extends VisualObject {
                 <span className='nickname-user-card'>{this.nickname}</span>
                 <span className='status-user-card'>{this.description}</span>
 
+                <div>
+                    {this.tags?.map((tag, index) => (
+                        <Element
+                            key={index} // Уникальный ключ для каждого тега
+                            instance={new Tag(tag.tag_name)}
+                        />
+                    ))}
+                </div>
+
                 {/*<div className="tags-container">*/}
                 {/*    {this.tags.map((tag) => (*/}
                 {/*        <Element*/}
@@ -60,6 +73,21 @@ class UserCard extends VisualObject {
         );
     }
 
+    getRandomElements<T>(array: T[]|null, count: number): T[]|null {
+        if (array==null)
+        {
+            return null;
+        }
+        if (array.length <= count) return array; // Если элементов меньше или равно `count`, возвращаем весь массив
+
+        const shuffled = array.slice(); // Копируем массив, чтобы не мутировать оригинал
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const randomIndex = Math.floor(Math.random() * (i + 1)); // Генерируем случайный индекс
+            [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]]; // Меняем местами элементы
+        }
+        return shuffled.slice(0, count); // Возвращаем первые `count` элементов
+    }
+
     readyToBeRendered() {
         //Запускается при подготовке к работе.
     }
@@ -69,8 +97,10 @@ class UserCard extends VisualObject {
     public userAvatar: UserCardAvatar;
     public userStatus: UserCardStatus;
 
-    description: string|undefined = undefined;
-    nickname: string|undefined = undefined;
+    description: string | undefined = undefined;
+    nickname: string | undefined = undefined;
+
+    public tags: TagDTO[]|null=[];
 }
 
 export default UserCard;
