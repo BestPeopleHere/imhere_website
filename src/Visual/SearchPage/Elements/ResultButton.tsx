@@ -1,7 +1,7 @@
 import Button from "../../ItcHyFeeL/DoneElements/Button.tsx";
 import $ from "jquery";
 import '../SearchPage.css';
-import ShowResultSearchButtonController from "../../../Controller/ShowResultSearchButtonController.tsx";
+import Controller from "../../../Controller/Controller.tsx";
 
 
 class ResultButton extends Button {
@@ -23,7 +23,7 @@ class ResultButton extends Button {
         //Запускается при подготовке к работе.
 
     }
-    public setActionController(controller: ShowResultSearchButtonController)
+    public setActionController(controller: Controller)
     {
 
         console.log(controller);

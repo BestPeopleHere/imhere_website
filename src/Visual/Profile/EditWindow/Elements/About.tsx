@@ -13,6 +13,8 @@ class NameInput extends Input {
                     className="example-input"
                     id={this.id}
                     placeholder={this.placeholder}
+                    maxLength={4096}
+                    defaultValue={this.value}
                     style={{
                         width: '700px', // Установка ширины на 700px
                         minHeight: '40px', // Минимальная высота

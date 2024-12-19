@@ -15,6 +15,8 @@ class NicknameInput extends Input {
                         className="example-input"
                         id={this.id}
                         placeholder={this.placeholder}
+                        maxLength={64}
+                        defaultValue={this.value}
                     />
                 </div>
             </div>

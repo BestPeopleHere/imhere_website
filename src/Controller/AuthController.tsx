@@ -6,10 +6,10 @@ class AuthController extends Controller {
         console.log("performe AuthController");
 
         try {
-            if (await Data.bc.authUser(Data.visual.appVisual?.authReg.emailInput.getValue(),
+            if (Data.visual.appVisual?.authReg.emailInput.getValue()==="" || Data.visual.appVisual?.authReg.passwordInput.getValue()===""||   await Data.bc.authUser(Data.visual.appVisual?.authReg.emailInput.getValue(),
                 Data.visual.appVisual?.authReg.passwordInput.getValue())==null)
             {
-                Data.visual.appVisual?.authReg.drawError("Брат, такой почты мы не знаем и/или в твоем прекрасном пароле опечатка. Точно сказать не могу, сорри");
+                Data.visual.appVisual?.authReg.drawError("Неправильный пароль, либо такого пользователя не существует.");
 
             }
             else
@@ -20,7 +20,7 @@ class AuthController extends Controller {
         }catch (e) {
             // console.log(Data.visual.appVisual?.authReg.passwordInput.getValue());
             // console.log(Data.visual.appVisual?.authReg.emailInput.getValue());
-            Data.visual.appVisual?.authReg.drawError("Брат, такой почты мы не знаем и/или в твоем прекрасном пароле опечатка. Точно сказать не могу, сорри");
+            Data.visual.appVisual?.authReg.drawError("Неправильный пароль, либо такого пользователя не существует.");
         }
         // const pokimon = await Data.bc.getPokimon();
         // console.log("pokimon: ", pokimon);

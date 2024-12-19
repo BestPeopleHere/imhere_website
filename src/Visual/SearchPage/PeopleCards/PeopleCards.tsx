@@ -31,7 +31,7 @@ class PeopleCards extends VisualObject {
     }
 /*nickname: Nickname;*/
 
-    userFound: UserFoundDTO[]|undefined = undefined;
+    public userFound: UserFoundDTO[]|undefined = undefined;
 
 }
 

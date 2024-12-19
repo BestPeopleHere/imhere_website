@@ -8,9 +8,25 @@ class Request extends Input {
 
     render() {
         return (
-                <div>
-                    <input id={this.id} type="text" placeholder="Что для тебя найти?"/>
-                </div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <input
+                    id={this.id}
+                    type="text"
+                    placeholder="Что для тебя найти?"
+                    style={{
+                        width: '100%',
+                        height: '65px',
+
+                        padding: '10px 20px',
+                        fontSize: '18px',
+                        fontFamily: 'var(--default-font-family)',
+                        boxSizing: 'border-box',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                    }}
+                />
+            </div>
         );
     }
 

@@ -40,7 +40,11 @@ class SearchPage extends VisualObject {
     showPeopleCards = () => {
         this.isShowPeopleCards=true;
 
+        this.peopleCards.forceUpdate();
         this.forceUpdate();
+
+
+        console.log("cards: ", this.peopleCards.userFound);
     }
 
     hidePeopleCards = () => {

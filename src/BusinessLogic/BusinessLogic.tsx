@@ -102,8 +102,7 @@ class BusinessLogic {
             status: status,
             description: description,
             birthday: birthday,
-            sex: sex,
-            link_to_avatar: "http://localhost:8080/uploads/имя_файла"
+            sex: sex
         };
 
         console.log("body: ", body);

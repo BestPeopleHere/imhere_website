@@ -107,11 +107,16 @@ class Profile extends VisualObject {
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
 
-                <div className="text-nickname">{this.nickname}</div>
-                <div className="text-status">{this.status}</div>
+
                 <div className="text-description">{this.description}</div>
-                <div className="text-birthday">{this.birthday}</div>
-                <div className="text-sex">{this.sex}</div>
+
+                <div className="text-container">
+                    <div className="text-nickname">{this.nickname}</div>
+                    <div className="text-status">{this.status}</div>
+
+                    <div className="text-birthday">{this.birthday}</div>
+                    <div className="text-sex">{this.sex}</div>
+                </div>
 
                 <div className="text-portfolio">Портфолио</div>
 

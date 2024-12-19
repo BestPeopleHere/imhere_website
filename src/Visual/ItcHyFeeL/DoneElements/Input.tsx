@@ -38,6 +38,20 @@ class Input extends DoneElement {
         return this.value;
     }
 
+    public setValue(value:string|null|undefined)
+    {
+        if (value==null || value==undefined)
+        {
+            this.value= "";
+        }
+        else
+        {
+            this.value=value;
+        }
+
+        this.forceUpdate();
+    }
+
     public setPlaceholder(placeholder: string)
     {
         this.placeholder = placeholder;

@@ -34,6 +34,9 @@ class EmailInput extends Input {
     {
         return this.value;
     }
+
+    value: string="";
+
 }
 
 export default EmailInput;

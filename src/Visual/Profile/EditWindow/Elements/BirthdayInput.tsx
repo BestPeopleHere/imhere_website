@@ -6,6 +6,15 @@ class BirthdayInput extends Input {
     constructor() {
         super();
         this.value = '';
+        this.maxDate = this.getTodayDate(); // Устанавливаем максимальную дату
+    }
+
+    getTodayDate(): string {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Добавляем ведущий ноль
+        const day = String(today.getDate()).padStart(2, '0'); // Добавляем ведущий ноль
+        return `${year}-${month}-${day}`; // Формат YYYY-MM-DD
     }
 
     render() {
@@ -16,7 +25,9 @@ class BirthdayInput extends Input {
                         type="date"
                         className={`${styles['example-input']} example-input`} // Добавляем классы стилей
                         id={this.id}
+                        defaultValue={this.value}
                         placeholder={this.placeholder}
+                        max={this.maxDate} // Ограничиваем выбор будущих дат
                         onChange={(event) => {
                             this.value = event.target.value;
                         }}
@@ -49,6 +60,8 @@ class BirthdayInput extends Input {
     public getValue(): string {
         return this.value;
     }
+
+    private maxDate: string; // Максимально допустимая дата
 }
 
 export default BirthdayInput;

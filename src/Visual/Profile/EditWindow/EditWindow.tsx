@@ -10,6 +10,8 @@ import ExitButton from "./Elements/ExitButton";
 import EditProfileController from "../../../Controller/EditProfileController.tsx";
 import BirthdayInput from "./Elements/BirthdayInput.tsx";
 import GenderInput from "./Elements/GenderInput.tsx";
+import UserProfileDTO from "../../../Controller/DTO/UserProfileDTO.tsx";
+import GetInfForEditController from "../../../Controller/GetInfForEditController.tsx";
 
 class EditWindow extends VisualObject {
     constructor() {
@@ -51,14 +53,26 @@ class EditWindow extends VisualObject {
                 );
             }
 
-                readyToBeRendered() {
+    readyToBeRendered() {
 
-                this.save.setActionController(new EditProfileController());
+        this.save.setActionController(new EditProfileController());
 
-                    this.nicknameInput.setMax(256);
-                    this.status.setMax(1024);
-                    this.about.setMax(4096);
-            }
+        const get:GetInfForEditController = new GetInfForEditController();
+        get.performe();
+    }
+
+    setInf(userProfile: UserProfileDTO | null)
+    {
+        console.log("э ",userProfile);
+
+        this.nicknameInput.setValue(userProfile?.nickname);
+        this.status.setValue(userProfile?.status);
+        this.about.setValue(userProfile?.description);
+        this.birthdayInput.setValue(userProfile?.birthday);
+        this.genderInput.setValue(userProfile?.sex);
+
+        this.forceUpdate();
+    }
 
     nicknameInput: Input;
     birthdayInput: Input;

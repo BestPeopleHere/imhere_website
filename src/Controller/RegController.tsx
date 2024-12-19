@@ -7,11 +7,10 @@ class RegController extends Controller {
 
 
         try {
-            if(await Data.bc.registerUser(Data.visual.appVisual?.authReg.emailInput.getValue(),
+            if(Data.visual.appVisual?.authReg.emailInput.getValue()==="" || Data.visual.appVisual?.authReg.passwordInput.getValue()===""||await Data.bc.registerUser(Data.visual.appVisual?.authReg.emailInput.getValue(),
                 Data.visual.appVisual?.authReg.passwordInput.getValue())==null)
             {
-                Data.visual.appVisual?.authReg.drawError(`Либо ты опоздал, и пользователь с такой почтой уже есть, либо данные не подходят по формату полей.
-                Пожалуйста, убедись, уважаемый пользователь, что твой прекрасный пароль соответствует следующим требованиям: <br><br>
+                Data.visual.appVisual?.authReg.drawError(`\tЛибо пользователь с такой почтой уже есть, либо данные не подходят по формату полей. Пожалуйста, убедитесь, что ваш пароль соответствует следующим требованием: <br><br>
                 
                 <div class="centered-list">
         <ul>
@@ -19,6 +18,7 @@ class RegController extends Controller {
             <li>2. Не менее одной заглавной буквы</li>
             <li>3. Не менее одной цифры</li>
             <li>4. Не менее одного специального символа</li>
+            <li>5. Минимум 8 символов</li>
         </ul>
     </div>`);
             }
@@ -30,8 +30,7 @@ class RegController extends Controller {
 
         }catch (e) {
 
-            Data.visual.appVisual?.authReg.drawError(`Либо ты опоздал, и пользователь с такой почтой уже есть, либо данные не подходят по формату полей.
-                Пожалуйста, убедись, уважаемый пользователь, что твой прекрасный пароль соответствует следующим требованиям: <br><br>
+            Data.visual.appVisual?.authReg.drawError(`\tЛибо пользователь с такой почтой уже есть, либо данные не подходят по формату полей. Пожалуйста, убедитесь, что ваш пароль соответствует следующим требованием: <br><br>
                 
                 <div class="centered-list">
         <ul>
@@ -39,6 +38,7 @@ class RegController extends Controller {
             <li>2. Не менее одной заглавной буквы</li>
             <li>3. Не менее одной цифры</li>
             <li>4. Не менее одного специального символа</li>
+            <li>5. Минимум 8 символов</li>
         </ul>
     </div>`);
         }
