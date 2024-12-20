@@ -13,7 +13,7 @@ import ShowEditProfileController from "../../Controller/ShowEditProfileControlle
 
 
 import SearchButton from "./Elements/SearchButton.tsx";
-import ToSearchButtonController from "../../Controller/ToSearchButtonController.tsx";
+import ToSearchButtonController2 from "../../Controller/ToSearchButtonController2.tsx";
 
 import UserProfileDTO from "../../Controller/DTO/UserProfileDTO.tsx";
 import AddTagButton from "./Elements/AddTagButton.tsx";
@@ -55,32 +55,7 @@ class OtherProfile extends VisualObject {
 
     render() {
         return (
-
             <div className='main-container'>
-
-                {/*<div className="tags-container">*/}
-                {/*    {this.tags?.map((tag: TagDTO) => (*/}
-                {/*        <Element*/}
-                {/*            key={tag.id}*/}
-                {/*            instance={new Tag(tag.tag_name)}*/}
-                {/*            className="tag"*/}
-                {/*        />*/}
-                {/*    ))}*/}
-                {/*    /!*<button*!/*/}
-                {/*    /!*    className="add-tag-button"*!/*/}
-                {/*    /!*    onClick={this.showTagWindow}>*!/*/}
-                {/*    /!*    +*!/*/}
-                {/*    /!*</button>*!/*/}
-                {/*</div>*/}
-
-
-                <Element instance={this.avatar}/>
-
-                <div className='main-contain'></div>
-                <div className='about-field'></div>
-                <div className='top-menu'></div>
-                <Element instance={this.searchButton} className="top-search-button"/>
-
 
                 <div className="tags-container">
                     {this.tags?.map((tag, index) => (
@@ -91,22 +66,30 @@ class OtherProfile extends VisualObject {
                     ))}
                 </div>
 
-                {/*<button className="add-tag-button"></button>*/}
+
+                <Element instance={this.avatar}/>
+
+                <div className='main-contain'></div>
+                <div className='about-field'></div>
+                <div className='top-menu'></div>
+
+                <Element instance={this.searchButton} className="top-search-button"/>
 
 
-                {/*<button*/}
-                {/*    className="add-tag-button"*/}
-                {/*    onClick={() => this.showTagWindow()} // Привязка события*/}
-                {/*></button>*/}
 
                 <div className="text-tag">Теги</div>
                 <div className="text-about">Обо мне</div>
 
-                <div className="text-nickname">{this.userProfile?.nickname}</div>
-                <div className="text-status">{this.userProfile?.status}</div>
-                <div className="text-description">{this.userProfile?.description}</div>
-                <div className="text-birthday">{this.userProfile?.birthday}</div>
-                <div className="text-sex">{this.userProfile?.sex}</div>
+
+                <div className="text-description">{this.description}</div>
+
+                <div className="text-container">
+                    <div className="text-nickname">{this.nickname}</div>
+                    <div className="text-status">{this.status}</div>
+
+                    <div className="text-birthday">{this.birthday}</div>
+                    <div className="text-sex">{this.sex}</div>
+                </div>
 
                 <div className="text-portfolio">Портфолио</div>
 
@@ -122,6 +105,14 @@ class OtherProfile extends VisualObject {
         console.log("other cool id: " + this.getLastPathSegment());
 
         this.userProfile = userProfile;
+
+        this.nickname = userProfile?.nickname;
+        this.status = userProfile?.status;
+        this.description = userProfile?.description;
+        this.birthday = userProfile?.birthday;
+        this.sex = userProfile?.sex;
+        this.link_to_avatar = userProfile?.link_to_avatar;
+        this.tags=userProfile?.tags;
         //
         // this.nickname = nickname;
         // this.status = status;
@@ -140,7 +131,7 @@ class OtherProfile extends VisualObject {
         this.editButton.setActionController(new ShowEditProfileController());
 
        // this.buttonSetPhoto.setActionController(new SetAvatarController());
-        this.searchButton.setActionController(new ToSearchButtonController());
+        this.searchButton.setActionController(new ToSearchButtonController2());
 
         this.buttonSetPhoto.setActionController(new SetAvatarController());
         this.addTagButton.setActionController(new GetUsersTagsForEditController());
@@ -193,7 +184,7 @@ class OtherProfile extends VisualObject {
 
     addTagButton: AddTagButton = new AddTagButton();
 
-    tags: TagDTO[]|null=[];
+    tags: TagDTO[]|null|undefined=[];
 
 
 

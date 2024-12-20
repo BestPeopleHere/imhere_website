@@ -97,24 +97,29 @@ button {
     text-align: left;
     white-space: nowrap;
     z-index: 2;
+    overflow: hidden; /* Обрезаем лишний текст */
+    text-overflow: ellipsis; /* Добавляем троеточия */
+    width: 300px; /* Устанавливаем ширину */
 }
 .status-user-card {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    display: -webkit-box; /* Используем flex-блоки для ограничения количества строк */
+    -webkit-line-clamp: 3; /* Устанавливаем максимум 3 строки */
+    -webkit-box-orient: vertical; /* Задаем вертикальную ориентацию */
+    overflow: hidden; /* Обрезаем лишний текст */
+    text-overflow: ellipsis; /* Добавляем троеточие для переполнения */
     position: absolute;
-    height: 20px;
     top: 81px;
     left: 207px;
     color: #ff82e0;
     font-family: Inter, var(--default-font-family);
     font-size: 16px;
     font-weight: 500;
-    line-height: 19.363636016845703px;
+    line-height: 1.5; /* Задаем высоту строки */
     text-align: left;
-    white-space: nowrap;
     z-index: 1;
+    width: 400px; /* Ограничиваем ширину */
 }
+
 .rectangle-button {
     position: absolute;
     width: 108px;

@@ -6,18 +6,31 @@ class SearchController extends Controller {
     async performe(): Promise<void> {
         console.log("SearchController");
 
-
-
-
         if (Data.visual?.appVisual?.search?.peopleCards) {
 
-            console.log("search by: ", Data.visual.appVisual.search.request.getValue(),Data.visual.appVisual.search.tags )
+            if (Data.visual.appVisual.search.peopleCards.userFound==undefined || Data.visual.appVisual.search.peopleCards.userFound.length <= 1) {
 
-            const userFound: UserFoundDTO[] = await Data.bc.searchUsers(Data.visual.appVisual.search.request.getValue(),Data.visual.appVisual.search.tags);
-            Data.visual.appVisual.search.peopleCards.userFound = userFound;
+            console.log("search by: ", Data.visual.appVisual.search.request.getValue(), Data.visual.appVisual.search.tags)
+
+            const userFound: UserFoundDTO[] = await Data.bc.searchUsers(Data.visual.appVisual.search.request.getValue(), Data.visual.appVisual.search.tags);
+          //  Data.visual.appVisual.search.peopleCards.userFound=[];
+         //   Data.visual.appVisual.search.peopleCards.forceUpdate();
+           // Data.visual.appVisual.search.peopleCards.userFound = userFound;
+
+                Data.visual.appVisual.search.peopleCards.setUsers(userFound);
+
+            Data.visual.appVisual.search.peopleCards.forceUpdate();
+            } else {
+
+
+                Data.visual.appVisual.search.peopleCards.setUsers([]);
+              //  Data.visual.appVisual.search.peopleCards.setUsers([user]);
+                console.log("my user: ",Data.visual.appVisual.search.peopleCards.userFound);
+                Data.visual.appVisual.search.peopleCards.forceUpdate();
+            }
         }
 
-        Data.visual.appVisual?.search.showPeopleCards();
+        //Data.visual.appVisual?.search.showPeopleCards();
 
     }
 }

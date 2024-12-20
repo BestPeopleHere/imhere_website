@@ -38,7 +38,7 @@ class SearchPage extends VisualObject {
     }
 
     showPeopleCards = () => {
-        this.isShowPeopleCards=true;
+        //this.isShowPeopleCards=true;
 
         this.peopleCards.forceUpdate();
         this.forceUpdate();
@@ -101,7 +101,7 @@ class SearchPage extends VisualObject {
                     <div className="search-field">
                         <Element instance={this.request} className="search-field"/>
                     </div>
-                    {this.isShowPeopleCards && <div onClick={this.hidePeopleCards}/>}
+                    {/*{this.isShowPeopleCards && <div onClick={this.hidePeopleCards}/>}*/}
                     {this.isShowPeopleCards && (
                         <Element instance={this.peopleCards} className="card-background"/>
                     )}
@@ -110,7 +110,6 @@ class SearchPage extends VisualObject {
                     <Element instance={this.backButton} className="back-button"/>
                     <Element instance={this.resultButton} className="result-button"/>
                     <Element instance={this.filterButton} className="filter-button"/>
-
                 </div>
             </div>
         );
@@ -142,7 +141,7 @@ class SearchPage extends VisualObject {
     resultButton: ResultButton;
     filterButton: FilterButton;
     request: Request;
-    isShowPeopleCards: boolean = false;
+    isShowPeopleCards: boolean = true;
     peopleCards: PeopleCards = new PeopleCards();
 
     isTagWindowVisible: boolean = false;

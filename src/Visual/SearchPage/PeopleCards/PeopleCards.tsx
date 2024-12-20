@@ -15,15 +15,22 @@ class PeopleCards extends VisualObject {
     render() {
         return (
             <div className="cards-container">
-                {this.userFound?.map((user, index) => (
+                {this.userCards.map((userCard, index) => (
                     <div key={index} className="card-wrapper">
-                        <Element instance={new UserCard(user)} />
+                        <Element instance={userCard} />
                     </div>
                 ))}
             </div>
         );
     }
 
+
+    setUsers(users: UserFoundDTO[]) {
+        this.userFound = users;
+        this.userCards = users.map(user => new UserCard(user)); // Создаем массив объектов UserCard
+        this.userCards.forEach(userCard => userCard.forceUpdate());
+        this.forceUpdate(); // Обновляем интерфейс
+    }
 
     readyToBeRendered() {
 
@@ -32,6 +39,7 @@ class PeopleCards extends VisualObject {
 /*nickname: Nickname;*/
 
     public userFound: UserFoundDTO[]|undefined = undefined;
+    private userCards: UserCard[]=[];
 
 }
 

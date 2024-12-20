@@ -53,15 +53,39 @@
     border-radius: 50px;
 }
 
+
+
+
 .tags-container {
     position: absolute;
     top: 540px;
     left: 600px;
     display: flex;
-    gap: 10px;
-    overflow: auto;
-    font-family: Inter, var(--default-font-family);
+    gap: 10px; /* Расстояние между элементами */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    overflow-y: hidden; /* Скрытие вертикальной прокрутки */
+    white-space: nowrap; /* Запрещаем перенос строк */
+    padding-bottom: 5px; /* Отступ для скроллбара */
+    max-width: 1200px; /* Укажите ширину, чтобы ограничить видимую область */
+    z-index: 100;
 }
+
+.tags-container::-webkit-scrollbar {
+    height: 6px; /* Высота горизонтального скролла */
+}
+
+.tags-container::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Цвет ползунка */
+    border-radius: 3px; /* Скругление ползунка */
+}
+
+.tags-container::-webkit-scrollbar-track {
+    background-color: transparent; /* Цвет трека */
+}
+
+
+
+
 
 .tag-window-container {
     position: fixed;

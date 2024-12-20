@@ -32,6 +32,7 @@ class ResultButton extends Button {
 
         $(`#${this.id}`).off().on('click', () => {
             controller.performe();
+            controller.performe();
         });
     }
 }

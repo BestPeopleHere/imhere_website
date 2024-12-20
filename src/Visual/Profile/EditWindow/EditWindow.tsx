@@ -31,7 +31,6 @@ class EditWindow extends VisualObject {
     render() {
         return (
             <div className={styles['main-container']}>
-                <Element instance={this.exit} className={styles.exit}/>
 
                 <span className={styles.name}>Никнейм</span>
                 <Element instance={this.nicknameInput} className={styles['rectangle-1']}/>

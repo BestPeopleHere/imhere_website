@@ -446,7 +446,7 @@ class BusinessLogic {
                 },
                 // body: JSON.stringify(requestBody)
                 body: JSON.stringify({
-                    description: description || " ", // Если description null, отправляем пустую строку
+                    description: description || "", // Если description null, отправляем пустую строку
                     tags: tagIds  // Массив id из TagDTO
                 })
             });
